@@ -153,31 +153,43 @@ function WhatsAppButton() {
 
 function AnimatedLogo({ size = 'normal' }: { size?: 'normal' | 'small' }) {
   const letters = ['M', 'C', 'P'];
+  const isSmall = size === 'small';
+
   return (
     <motion.div
-      className="flex items-center gap-3 group cursor-pointer"
+      className="flex items-center gap-3 group cursor-pointer select-none"
       whileHover="hover"
       initial="rest"
       animate="rest"
     >
-      {/* Icon box with letter-by-letter animation */}
+      {/* Icon badge */}
       <motion.div
-        className={`${size === 'small' ? 'w-9 h-9' : 'w-12 h-12'
-          } rounded-lg bg-gradient-to-br from-gold via-flame to-ember flex items-center justify-center shadow-lg shadow-flame/30 relative overflow-hidden`}
+        className={`relative flex items-center justify-center rounded-xl overflow-hidden
+          ${isSmall ? 'w-10 h-10' : 'w-14 h-14'}
+          bg-gradient-to-br from-gold via-flame to-ember shadow-xl shadow-flame/40`}
         variants={{
-          hover: { scale: 1.12, rotate: -4 },
+          hover: { scale: 1.15, rotate: -6 },
           rest: { scale: 1, rotate: 0 },
         }}
-        transition={{ type: 'spring', stiffness: 300, damping: 18 }}
+        transition={{ type: 'spring', stiffness: 320, damping: 16 }}
       >
-        <div className="flex gap-0">
+        {/* Pulsing glow ring */}
+        <motion.div
+          className="absolute inset-0 rounded-xl border-2 border-white/40"
+          animate={{ scale: [1, 1.18, 1], opacity: [0.6, 0, 0.6] }}
+          transition={{ repeat: Infinity, duration: 2.4, ease: 'easeInOut' }}
+        />
+        {/* Bouncing letters */}
+        <div className="flex gap-px relative z-10">
           {letters.map((l, i) => (
             <motion.span
-              key={l}
-              className={`${size === 'small' ? 'text-[10px]' : 'text-[13px]'
-                } font-black text-deep relative z-10 leading-none`}
+              key={l + i}
+              className={`font-black text-deep leading-none ${isSmall ? 'text-[11px]' : 'text-[15px]'}`}
               variants={{
-                hover: { y: [0, -3, 0], transition: { delay: i * 0.08, repeat: Infinity, duration: 0.6 } },
+                hover: {
+                  y: [0, -5, 0],
+                  transition: { delay: i * 0.09, repeat: Infinity, duration: 0.55, ease: 'easeOut' },
+                },
                 rest: { y: 0 },
               }}
             >
@@ -187,39 +199,47 @@ function AnimatedLogo({ size = 'normal' }: { size?: 'normal' | 'small' }) {
         </div>
         {/* Shimmer sweep */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent"
-          animate={{ x: ['-100%', '200%'] }}
-          transition={{ repeat: Infinity, duration: 2.2, ease: 'linear', repeatDelay: 1 }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/55 to-transparent skew-x-[-20deg]"
+          animate={{ x: ['-130%', '210%'] }}
+          transition={{ repeat: Infinity, duration: 2.6, ease: 'linear', repeatDelay: 0.8 }}
         />
       </motion.div>
 
       {/* Text */}
-      <div className="flex flex-col leading-none">
+      <div className="flex flex-col leading-none gap-0.5">
         <motion.div
           className="flex items-baseline gap-1.5"
-          variants={{ hover: { x: 3 }, rest: { x: 0 } }}
-          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+          variants={{ hover: { x: 4 }, rest: { x: 0 } }}
+          transition={{ type: 'spring', stiffness: 380, damping: 22 }}
         >
+          {'MCP'.split('').map((ch, i) => (
+            <motion.span
+              key={ch + i}
+              className={`font-black tracking-tight text-white ${isSmall ? 'text-xl' : 'text-[1.75rem]'}`}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.12 + 0.15, duration: 0.4, ease: 'easeOut' }}
+            >
+              {ch}
+            </motion.span>
+          ))}
           <motion.span
-            className={`${size === 'small' ? 'text-lg' : 'text-2xl'
-              } font-black tracking-tighter uppercase text-white`}
+            className={`text-flame font-black uppercase tracking-wide ${isSmall ? 'text-sm' : 'text-[1.1rem]'}`}
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.55, duration: 0.5, ease: 'easeOut' }}
           >
-            MCP
-          </motion.span>
-          <motion.span
-            className={`${size === 'small' ? 'text-base' : 'text-xl'
-              } text-flame font-black uppercase`}
-          >
-            Construção
+            CONSTRUÇÕES
           </motion.span>
         </motion.div>
-        {size !== 'small' && (
+        {!isSmall && (
           <motion.span
-            className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.35em] mt-0.5"
+            className="text-[9px] font-bold uppercase tracking-[0.4em]"
             variants={{
-              hover: { opacity: 1, letterSpacing: '0.45em' },
-              rest: { opacity: 0.6, letterSpacing: '0.35em' },
+              hover: { opacity: 1, letterSpacing: '0.52em', color: '#f97316' },
+              rest: { opacity: 0.5, letterSpacing: '0.4em', color: '#6b7280' },
             }}
+            transition={{ duration: 0.3 }}
           >
             Engenharia &amp; Obras
           </motion.span>
@@ -650,7 +670,7 @@ function About() {
             </h2>
 
             <p className="text-gray-300 text-lg leading-relaxed mb-6 font-medium">
-              A <strong className="text-white">MCP Construção</strong> nasceu da paixão por transformar projetos em realidade. Com uma equipe multidisciplinar e processos otimizados, entregamos obras que superam as expectativas de nossos clientes.
+              A <strong className="text-white">MCP Construções</strong> nasceu da paixão por transformar projetos em realidade. Com uma equipe multidisciplinar e processos otimizados, entregamos obras que superam as expectativas de nossos clientes.
             </p>
             <p className="text-gray-400 mb-10 leading-relaxed font-medium">
               Do alicerce ao acabamento, cada detalhe importa. Nossa trajetória é marcada pela confiança conquistada através de resultados sólidos e transparentes.
@@ -883,7 +903,7 @@ function Footer() {
           <AnimatedLogo size="small" />
         </div>
         <p className="text-gray-500 text-sm font-medium">
-          &copy; 2024 MCP Construção Engenharia e Obras. Todos os direitos reservados.
+          &copy; 2024 MCP Construções Engenharia e Obras. Todos os direitos reservados.
         </p>
       </div>
     </footer>
