@@ -140,7 +140,7 @@ function WhatsAppButton() {
         href="https://wa.me/351934627192"
         target="_blank"
         rel="noopener noreferrer"
-        className="block w-16 h-16 bg-[#25D366] rounded-full shadow-2xl shadow-green-500/40 flex items-center justify-center text-3xl hover:bg-[#20ba5a] transition-all duration-300 relative overflow-hidden group-hover:scale-110"
+        className="btn-whatsapp-premium block w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center text-3xl group-hover:scale-110 glow-active"
         whileHover={{ rotate: 15, scale: 1.1 }}
         whileTap={{ scale: 0.9, rotate: 0 }}
       >
@@ -376,7 +376,7 @@ function Navbar() {
             ))}
             <motion.a
               href="tel:11999999999"
-              className="ml-2 px-6 py-2.5 bg-gradient-to-r from-flame to-ember rounded text-sm font-bold text-white shadow-lg shadow-flame/20 hover:shadow-flame/40 transition-all duration-300"
+              className="ml-2 px-6 py-2.5 btn-premium rounded text-sm font-bold text-white shadow-lg"
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -423,7 +423,7 @@ function Navbar() {
               <motion.a
                 href="tel:11999999999"
                 onClick={() => setMenuOpen(false)}
-                className="block w-full text-center px-6 py-4 bg-gradient-to-r from-flame to-ember rounded text-base font-black text-white shadow-lg mt-4"
+                className="btn-premium glow-active block w-full text-center px-6 py-4 rounded text-base font-black text-white shadow-lg mt-4"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -497,7 +497,7 @@ function Hero() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.9 }} className="flex flex-col sm:flex-row gap-4">
             <motion.a
               href="#contact"
-              className="px-10 py-5 bg-gradient-to-r from-flame to-ember rounded font-black text-white shadow-2xl shadow-flame/30 flex items-center justify-center gap-3 group"
+              className="btn-premium glow-active px-10 py-5 rounded font-black text-white shadow-2xl flex items-center justify-center gap-3 group"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -890,7 +890,7 @@ function Contact() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={loading}
-                className="w-full py-5 bg-gradient-to-r from-flame to-ember rounded font-black text-white shadow-xl shadow-flame/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 italic"
+                className="btn-premium w-full py-5 rounded font-black text-white disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 italic"
                 type="submit"
               >
                 {loading ? (
