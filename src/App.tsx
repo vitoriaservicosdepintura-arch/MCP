@@ -141,7 +141,8 @@ function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         className="block w-16 h-16 bg-[#25D366] rounded-full shadow-2xl shadow-green-500/40 flex items-center justify-center text-3xl hover:bg-[#20ba5a] transition-all duration-300 relative overflow-hidden group-hover:scale-110"
-        whileHover={{ rotate: 15 }}
+        whileHover={{ rotate: 15, scale: 1.1 }}
+        whileTap={{ scale: 0.9, rotate: 0 }}
       >
         <svg viewBox="0 0 24 24" width="32" height="32" fill="white">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.171.82db-.333.051-.741.066-2.147-.514-1.743-.718-2.859-2.529-2.946-2.644-.087-.115-.717-.953-.717-1.815a1.868 1.868 0 0 1 .554-1.393c.189-.189.41-.284.545-.284.136 0 .272.001.392.006.124.005.291-.047.457.346.166.392.569 1.383.619 1.482.051.1.084.216.017.348-.067.133-.101.216-.201.332-.1.116-.21.26-.3.348-.1.087-.205.183-.088.383.117.2.518.854 1.112 1.385.765.684 1.408.896 1.607.994.2.098.316.083.432-.051.116-.134.502-.584.636-.784.135-.2.27-.167.455-.1.187.067 1.179.556 1.384.657.205.101.341.15.392.236.05.086.05.498-.094.903zM12 2a10 10 0 0 0-10 10c0 1.84.498 3.565 1.365 5.052L2 22l5.14-1.348A9.97 9.97 0 0 0 12 22a10 10 0 0 0 10-10A10 10 0 0 0 12 2z" />
@@ -410,7 +411,8 @@ function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block text-lg font-bold text-gray-200 hover:text-flame transition-colors"
+                  className="block text-lg font-bold text-gray-200 hover:text-flame transition-colors py-1"
+                  whileTap={{ scale: 0.95, x: 10 }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
@@ -418,12 +420,15 @@ function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <a
+              <motion.a
                 href="tel:11999999999"
+                onClick={() => setMenuOpen(false)}
                 className="block w-full text-center px-6 py-4 bg-gradient-to-r from-flame to-ember rounded text-base font-black text-white shadow-lg mt-4"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Ligar Agora
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         )}
@@ -598,33 +603,45 @@ function Portfolio() {
           </AnimatedSection>
 
           <AnimatedSection>
-            <button className="px-8 py-4 border border-white/10 rounded font-bold hover:bg-white/5 transition-colors">
+            <motion.button
+              className="px-8 py-4 border border-white/10 rounded font-bold hover:bg-white/5 transition-colors"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Explorar Todos os Projetos
-            </button>
+            </motion.button>
           </AnimatedSection>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {PROJECTS.map((project, i) => (
             <AnimatedSection key={project.id} delay={i * 0.15}>
-              <div className="group cursor-pointer">
+              <motion.div
+                className="group cursor-pointer"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6">
                   <img
                     src={project.image}
                     alt={project.name}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
 
-                  <div className="absolute bottom-6 left-6">
-                    <span className="inline-block px-3 py-1 bg-flame rounded text-[10px] font-black uppercase tracking-widest text-white mb-2">
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <span className="inline-block px-3 py-1 bg-flame rounded text-[10px] font-black uppercase tracking-widest text-white mb-2 shadow-lg">
                       {project.category}
                     </span>
-                    <h3 className="text-2xl font-black text-white tracking-tight">{project.name}</h3>
-                    <p className="text-gray-300 text-sm font-medium mt-1">{project.location}</p>
+                    <h3 className="text-xl md:text-2xl font-black text-white mb-1 tracking-tight">
+                      {project.name}
+                    </h3>
+                    <p className="text-gray-300 text-sm font-medium flex items-center gap-2 mt-1">
+                      {project.location}
+                    </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </AnimatedSection>
           ))}
         </div>
