@@ -384,55 +384,9 @@ function Navbar() {
             </motion.a>
           </div>
 
-          {/* Mobile hamburger */}
-          <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-2 text-white relative z-50" aria-label="Menu">
-            <div className="w-6 h-5 flex flex-col justify-between">
-              <span className={`block w-full h-0.5 bg-white rounded transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[9px]' : ''}`} />
-              <span className={`block w-full h-0.5 bg-white rounded transition-all duration-300 ${menuOpen ? 'opacity-0 scale-0' : ''}`} />
-              <span className={`block w-full h-0.5 bg-white rounded transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[9px]' : ''}`} />
-            </div>
-          </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden bg-deep/98 backdrop-blur-2xl border-t border-white/5 overflow-hidden"
-          >
-            <div className="px-6 py-8 space-y-5">
-              {NAV_LINKS.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="block text-lg font-bold text-gray-200 hover:text-flame transition-colors py-1"
-                  whileTap={{ scale: 0.95, x: 10 }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06 }}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-              <motion.a
-                href="tel:11999999999"
-                onClick={() => setMenuOpen(false)}
-                className="btn-premium glow-active block w-full text-center px-6 py-4 rounded text-base font-black text-white shadow-lg mt-4"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Ligar Agora
-              </motion.a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.nav>
   );
 }
@@ -928,12 +882,129 @@ function Footer() {
 }
 
 /* ═══════════════════════════════════════════
+   MOBILE BOTTOM NAV
+   ═══════════════════════════════════════════ */
+
+function MobileBottomNav() {
+  const [activeTab, setActiveTab] = useState('inicio');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['hero', 'services', 'contact', 'portfolio', 'about'];
+      let current = '';
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el && window.scrollY >= el.offsetTop - 300) {
+          current = section;
+        }
+      }
+      if (current) setActiveTab(current);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    {
+      id: 'hero', label: 'INÍCIO', icon:
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+    },
+    {
+      id: 'services', label: 'SERVIÇOS', icon:
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+        </svg>
+    },
+    {
+      id: 'contact', label: 'ORÇAMENTO', special: true, icon:
+        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c-2.28 0-3-1.5-3-3s3-5 3-5f-1 1-1 2.5S11.5 9 13 9c2.28 0 3 1.5 3 3a4.5 4.5 0 0 1-4.5 4.5c-3 0-4.5-1.5-4.5-3z" />
+          <path d="M12 22a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" />
+        </svg>
+    },
+    {
+      id: 'portfolio', label: 'PORTFÓLIO', icon:
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+          <circle cx="8.5" cy="8.5" r="1.5" />
+          <polyline points="21 15 16 10 5 21" />
+        </svg>
+    },
+    {
+      id: 'about', label: 'SOBRE', icon:
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="16" x2="12" y2="12" />
+          <line x1="12" y1="8" x2="12.01" y2="8" />
+        </svg>
+    }
+  ];
+
+  return (
+    <div className="lg:hidden fixed bottom-4 left-4 right-4 z-[90]">
+      <div className="bg-[#121626]/95 backdrop-blur-2xl rounded-full border border-white/10 shadow-2xl flex items-center justify-between px-2 py-2 relative h-[72px]">
+        {navItems.map((item) => {
+          const isActive = activeTab === item.id;
+
+          if (item.special) {
+            return (
+              <div key={item.id} className="relative flex flex-col items-center justify-center w-1/5 h-full">
+                <motion.a
+                  href={`#${item.id}`}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setActiveTab(item.id)}
+                  className="absolute -top-6 w-[72px] h-[72px] rounded-full bg-deep border-[6px] border-[#0a0a0c] flex flex-col items-center justify-center shadow-lg flame-float-btn"
+                >
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-gold via-flame to-ember flex flex-col items-center justify-center glow-active">
+                    <div className="text-white mb-0.5">{item.icon}</div>
+                  </div>
+                </motion.a>
+                <span className="absolute bottom-1 text-[9px] font-black text-flame tracking-widest mt-6">
+                  {item.label}
+                </span>
+              </div>
+            );
+          }
+
+          return (
+            <div key={item.id} className="w-1/5 h-full relative">
+              <motion.a
+                href={`#${item.id}`}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setActiveTab(item.id)}
+                className="w-full h-full flex flex-col items-center justify-center gap-1.5"
+              >
+                <div className={`transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-400'}`}>
+                  {item.icon}
+                </div>
+                <span className={`text-[8px] font-black tracking-widest transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-500'}`}>
+                  {item.label}
+                </span>
+              </motion.a>
+              {isActive && (
+                <motion.div
+                  layoutId="bottom-nav-indicator"
+                  className="absolute top-1 left-1/2 -translate-x-1/2 w-8 h-1 bg-flame rounded-full blur-[2px]"
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════
    MAIN APP
    ═══════════════════════════════════════════ */
 
 export default function App() {
   return (
-    <div className="noise-overlay selection:bg-flame selection:text-white">
+    <div className="noise-overlay selection:bg-flame selection:text-white pb-[100px] lg:pb-0">
       <Navbar />
       <Hero />
       <Services />
@@ -942,6 +1013,7 @@ export default function App() {
       <Contact />
       <Footer />
       <WhatsAppButton />
+      <MobileBottomNav />
     </div>
   );
 }
