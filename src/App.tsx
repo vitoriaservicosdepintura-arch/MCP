@@ -9,8 +9,8 @@ import {
 import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
-  'https://wlknlijeuvfpespmvmsy.supabase.co',
-  'sb_publishable_cdDdVReNZuH3z_f3_Y7lZg_4y4mBnHC'
+  'https://qrqzvuoymajceqplmfmc.supabase.co',
+  'sb_publishable_DCR4nu-D0VQMsDtsyGP5aQ_sjhpflKl'
 );
 
 /* ═══════════════════════════════════════════
