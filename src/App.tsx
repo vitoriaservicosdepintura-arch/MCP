@@ -152,59 +152,76 @@ function WhatsAppButton() {
 }
 
 function AnimatedLogo({ size = 'normal' }: { size?: 'normal' | 'small' }) {
+  const letters = ['M', 'C', 'P'];
   return (
     <motion.div
-      className="flex items-center gap-2.5 group cursor-pointer"
+      className="flex items-center gap-3 group cursor-pointer"
       whileHover="hover"
       initial="rest"
       animate="rest"
     >
+      {/* Icon box with letter-by-letter animation */}
       <motion.div
-        className={`${size === 'small' ? 'w-8 h-8' : 'w-10 h-10'} rounded bg-gradient-to-br from-gold via-flame to-ember flex items-center justify-center shadow-lg shadow-flame/20 relative overflow-hidden`}
+        className={`${size === 'small' ? 'w-9 h-9' : 'w-12 h-12'
+          } rounded-lg bg-gradient-to-br from-gold via-flame to-ember flex items-center justify-center shadow-lg shadow-flame/30 relative overflow-hidden`}
         variants={{
-          hover: { scale: 1.1, rotate: 5 },
-          rest: { scale: 1, rotate: 0 }
+          hover: { scale: 1.12, rotate: -4 },
+          rest: { scale: 1, rotate: 0 },
         }}
+        transition={{ type: 'spring', stiffness: 300, damping: 18 }}
       >
-        <motion.span
-          className={`${size === 'small' ? 'text-lg' : 'text-xl'} font-black text-deep relative z-10`}
-          variants={{
-            hover: { y: [0, -2, 0] },
-            rest: { y: 0 }
-          }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          JV
-        </motion.span>
-        {/* Animated shine */}
+        <div className="flex gap-0">
+          {letters.map((l, i) => (
+            <motion.span
+              key={l}
+              className={`${size === 'small' ? 'text-[10px]' : 'text-[13px]'
+                } font-black text-deep relative z-10 leading-none`}
+              variants={{
+                hover: { y: [0, -3, 0], transition: { delay: i * 0.08, repeat: Infinity, duration: 0.6 } },
+                rest: { y: 0 },
+              }}
+            >
+              {l}
+            </motion.span>
+          ))}
+        </div>
+        {/* Shimmer sweep */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full"
-          variants={{
-            hover: { x: ['100%', '-100%'] },
-            rest: { x: '-100%' }
-          }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent"
+          animate={{ x: ['-100%', '200%'] }}
+          transition={{ repeat: Infinity, duration: 2.2, ease: 'linear', repeatDelay: 1 }}
         />
       </motion.div>
+
+      {/* Text */}
       <div className="flex flex-col leading-none">
         <motion.div
-          variants={{
-            hover: { x: 2 },
-            rest: { x: 0 }
-          }}
+          className="flex items-baseline gap-1.5"
+          variants={{ hover: { x: 3 }, rest: { x: 0 } }}
+          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         >
-          <span className={`${size === 'small' ? 'text-lg' : 'text-xl'} font-black tracking-tighter uppercase`}>JV </span>
-          <span className={`${size === 'small' ? 'text-lg' : 'text-xl'} text-flame font-black uppercase`}>Construções</span>
+          <motion.span
+            className={`${size === 'small' ? 'text-lg' : 'text-2xl'
+              } font-black tracking-tighter uppercase text-white`}
+          >
+            MCP
+          </motion.span>
+          <motion.span
+            className={`${size === 'small' ? 'text-base' : 'text-xl'
+              } text-flame font-black uppercase`}
+          >
+            Construção
+          </motion.span>
         </motion.div>
         {size !== 'small' && (
           <motion.span
-            className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em] mt-0.5"
+            className="text-[9px] font-bold text-gray-500 uppercase tracking-[0.35em] mt-0.5"
             variants={{
-              hover: { opacity: 1, letterSpacing: '0.4em' },
-              rest: { opacity: 0.7, letterSpacing: '0.3em' }
+              hover: { opacity: 1, letterSpacing: '0.45em' },
+              rest: { opacity: 0.6, letterSpacing: '0.35em' },
             }}
           >
-            Engenharia & Obras
+            Engenharia &amp; Obras
           </motion.span>
         )}
       </div>
@@ -633,7 +650,7 @@ function About() {
             </h2>
 
             <p className="text-gray-300 text-lg leading-relaxed mb-6 font-medium">
-              A <strong className="text-white">JV Construções</strong> nasceu da paixão por transformar projetos em realidade. Com uma equipe multidisciplinar e processos otimizados, entregamos obras que superam as expectativas de nossos clientes.
+              A <strong className="text-white">MCP Construção</strong> nasceu da paixão por transformar projetos em realidade. Com uma equipe multidisciplinar e processos otimizados, entregamos obras que superam as expectativas de nossos clientes.
             </p>
             <p className="text-gray-400 mb-10 leading-relaxed font-medium">
               Do alicerce ao acabamento, cada detalhe importa. Nossa trajetória é marcada pela confiança conquistada através de resultados sólidos e transparentes.
@@ -866,7 +883,7 @@ function Footer() {
           <AnimatedLogo size="small" />
         </div>
         <p className="text-gray-500 text-sm font-medium">
-          © 2024 JV Construções Engenharia e Construções. Todos os direitos reservados.
+          &copy; 2024 MCP Construção Engenharia e Obras. Todos os direitos reservados.
         </p>
       </div>
     </footer>
