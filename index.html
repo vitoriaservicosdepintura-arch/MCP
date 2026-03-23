@@ -1407,17 +1407,19 @@
 
     <script>
         // ===== MCP INICIALIZAÇÕES ADICIONAIS =====
-        // Resetar scroll ao topo no refresh F5 (blindado contra hashes)
+        // 1. Resetar scroll ao topo no refresh F5 (blindado contra hashes)
         if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
         window.scrollTo(0, 0);
-        window.addEventListener('load', function () {
+
+        // Limpa hash e reseta scroll no instante que carregar
+        window.onload = function () {
             setTimeout(function () {
                 window.scrollTo(0, 0);
                 if (window.location.hash) {
-                    history.replaceState('', document.title, window.location.pathname);
+                    history.pushState('', document.title, window.location.pathname + window.location.search);
                 }
-            }, 10);
-        });
+            }, 5);
+        };
 
         (function ($) {
 
