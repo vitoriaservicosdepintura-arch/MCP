@@ -733,6 +733,40 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* ===== BOTÃO VOLTAR AO TOPO ===== */
+        #backToTop {
+            position: fixed;
+            bottom: 105px;
+            right: 38px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(200, 169, 110, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 9997;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: var(--gold);
+            color: #111;
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 
@@ -899,10 +933,9 @@
 
                 <div class="row" style="margin-bottom: 80px;">
                     <!-- A Imagem DEVE ser a primeira coluna para o CSS do tema não bugar no responsivo nem no zigue-zague -->
-                    <div class="col" data-reveal="right">
-                        <img src="https://images.unsplash.com/photo-1517646280104-a3cd68b776ba?w=1000&q=80"
-                            alt="Obras Comerciais e Industriais"
-                            style="border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                    <div class="col">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80"
+                            alt="Obras Comerciais e Industriais" style="width: 100%; height: auto; border-radius: 8px;">
                     </div>
                     <div class="col" data-reveal="left"
                         style="transition-delay: 0.3s; display: flex; flex-direction: column; justify-content: center;">
@@ -1355,6 +1388,11 @@
         </a>
     </div>
 
+    <!-- ===== BOTÃO VOLTAR AO TOPO ===== -->
+    <a href="#" id="backToTop" title="Voltar ao Topo">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
     <!-- ===== SCRIPTS LOCAIS DO TEMA NOBISLUX ===== -->
     <!-- jQuery -->
     <script src="wp-includes/js/jquery/jquery.min_ver=3.7.1.js"></script>
@@ -1395,8 +1433,13 @@
             var revEls = document.querySelectorAll('[data-reveal]');
             function doReveal() {
                 revEls.forEach(function (el) {
-                    if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+                    var rect = el.getBoundingClientRect();
+                    var inView = (rect.top < window.innerHeight - 50) && (rect.bottom > 50);
+                    if (inView) {
                         el.classList.add('revealed');
+                    } else {
+                        // Remove para permitir re-animação ao rolar de volta
+                        el.classList.remove('revealed');
                     }
                 });
             }
@@ -1404,13 +1447,27 @@
             window.addEventListener('scroll', doReveal);
             window.addEventListener('load', doReveal);
 
-            // 3. Header muda cor ao scrollar
+            // 3. Header muda cor ao scrollar & Botão Topo visível
             $(window).on('scroll', function () {
-                if ($(this).scrollTop() > 60) {
+                var st = $(this).scrollTop();
+                if (st > 60) {
                     $('#header').css('background', 'rgba(10,10,10,0.98)');
                 } else {
                     $('#header').css('background', '');
                 }
+
+                // Mostrar/Esconder botão topo
+                if (st > 500) {
+                    $('#backToTop').addClass('visible');
+                } else {
+                    $('#backToTop').removeClass('visible');
+                }
+            });
+
+            // 4. Clique Voltar ao Topo
+            $('#backToTop').on('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
             // 4. Formulário de contato conectado ao Supabase
