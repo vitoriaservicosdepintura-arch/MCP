@@ -1423,7 +1423,33 @@
 
         (function ($) {
 
-            // 1. Remove loading spinner
+            // 1. Force-re-initialize Slider (Garante 6 segundos e loop infinito)
+            function initMcpSlider() {
+                var $slider = $('.home-slideshow');
+                if ($slider.hasClass('slick-initialized')) {
+                    $slider.slick('unslick');
+                }
+                $slider.slick({
+                    autoplay: true,
+                    autoplaySpeed: 6000,
+                    infinite: true,
+                    fade: true,
+                    cssEase: 'linear',
+                    speed: 1000,
+                    arrows: true,
+                    dots: true,
+                    pauseOnHover: false,
+                    pauseOnFocus: false,
+                    draggable: true,
+                    waitForAnimate: false,
+                    appendDots: $('.controls-bar'),
+                    appendArrows: $('.controls-bar')
+                });
+            }
+            $(document).ready(initMcpSlider);
+            $(window).on('load', initMcpSlider);
+
+            // 2. Remove loading spinner
             $('b.animsition-loading').hide();
             $('#wrapper').removeClass('loading');
             $(window).on('load', function () {
