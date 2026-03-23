@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MCP Construções | Construção Civil de Alto Padrão</title>
+    <meta name="description"
+        content="Mais de 15 anos de experiência em obras residenciais, comerciais e industriais. Qualidade, prazo e compromisso em cada projeto.">
+
+    <!-- Nobislux Theme CSS (arquivos locais) -->
+    <link rel="stylesheet" href="nobislux.com/wp-content/themes/nobislux/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="nobislux.com/wp-content/themes/nobislux/css/jquery.fancybox.min.css" type="text/css"
+        media="all">
+    <link rel="stylesheet" href="nobislux.com/wp-content/themes/nobislux/css/styles.css" type="text/css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800&display=swap" rel="stylesheet"
+        type="text/css" media="all">
+
+    <style>
+        /* ===== MCP CUSTOM STYLES ===== */
+        :root {
+            --gold: #c8a96e;
+            --dark: #111;
+        }
+
+        /* Logo */
+        .logo a {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 1px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logo-name span {
+            color: var(--gold);
+        }
+
+        .logo-sub2 {
+            font-size: 0.55rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Btn ligar no menu */
+        .btn-ligar {
+            background: var(--gold) !important;
+            color: #1a1a1a !important;
+            padding: 9px 18px !important;
+            border-radius: 5px;
+            font-weight: 700 !important;
+        }
+
+        .btn-ligar:hover {
+            background: #a8893e !important;
+            color: #fff !important;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            background: #111;
+            border-top: 2px solid var(--gold);
+            padding: 45px 0;
+        }
+
+        .stats-bar .container {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .stat-num sup {
+            font-size: 1.6rem;
+        }
+
+        .stat-lbl {
+            font-size: 0.62rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: 'Poppins', sans-serif;
+            display: block;
+            margin-top: 8px;
+        }
+
+        /* Service cards grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .svc-card {
+            background: #f7f7f7;
+            border-radius: 10px;
+            padding: 35px 28px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.35s;
+        }
+
+        .svc-card:hover {
+            border-bottom-color: var(--gold);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.09);
+            transform: translateY(-6px);
+            background: #fff;
+        }
+
+        .svc-icon {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+            display: block;
+            width: 65px;
+            height: 65px;
+            background: rgba(200, 169, 110, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .svc-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .svc-card p {
+            font-size: 0.83rem;
+            line-height: 1.75;
+            color: #666;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 16px;
+        }
+
+        .svc-link {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .svc-link:hover {
+            color: #a8893e;
+        }
+
+        @media(max-width:900px) {
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:600px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section eyebrow */
+        .eyebrow {
+            font-size: 0.62rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Contact section */
+        .contact-wrap {
+            background: #f4f4f4;
+            padding: 100px 0;
+        }
+
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .c-info-item {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            margin-bottom: 28px;
+        }
+
+        .c-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .c-info-item h5 {
+            font-size: 0.62rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .c-info-item p,
+        .c-info-item a {
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+        }
+
+        .c-form {
+            background: #fff;
+            padding: 50px;
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .c-form .frow {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .fg {
+            margin-bottom: 18px;
+        }
+
+        .fg label {
+            font-size: 0.62rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        .fg input,
+        .fg select,
+        .fg textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.88rem;
+            color: #1a1a1a;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+
+        .fg input:focus,
+        .fg select:focus,
+        .fg textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.15);
+        }
+
+        .fg textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .fg select {
+            cursor: pointer;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: #1a1a1a;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-send:hover {
+            background: #a8893e;
+            color: #fff;
+        }
+
+        @media(max-width:900px) {
+            .contact-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .c-form {
+                padding: 30px 20px;
+            }
+
+            .c-form .frow {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:1024px) {
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        @media(max-width:600px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== WHATSAPP HOVER COM ROSTO ===== */
+        .whatsapp-container {
+            position: fixed;
+            bottom: 120px;
+            right: 28px;
+            z-index: 9999;
+        }
+
+        .wa-btn {
+            background: #25D366;
+            color: #fff;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            animation: waPls 2.2s infinite;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .wa-btn:hover {
+            animation: none;
+            transform: scale(1.05);
+            background: #1ebe57;
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+            color: #fff;
+        }
+
+        .wa-tooltip {
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%) translateX(20px);
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .wa-btn:hover .wa-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .wa-rosto {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #25d366;
+            background: #f4f4f4;
+        }
+
+        .wa-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            padding-right: 10px;
+        }
+
+        .wa-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #111;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .wa-status {
+            font-size: 0.70rem;
+            color: #25d366;
+            font-weight: 600;
+        }
+
+        @keyframes waPls {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.07);
+            }
+        }
+
+        /* reveal */
+        [data-reveal] {
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        [data-reveal="left"] {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+
+        [data-reveal="right"] {
+            opacity: 0;
+            transform: translateX(40px);
+        }
+
+        [data-reveal="up"] {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        [data-reveal].revealed {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* ===== MUSIC PLAYER FLUTUANTE ===== */
+        .mcp-music-player {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 9998;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            animation: playerFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes playerFloat {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .mp-toggle {
+            background: #2a2a2a;
+            color: #fff;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .mp-toggle:hover {
+            transform: scale(1.1);
+            background: #111;
+        }
+
+        .mcp-music-player.minimized .mp-toggle {
+            display: flex;
+        }
+
+        .mcp-music-player.minimized .mp-panel {
+            display: none;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mp-panel {
+            background: #fff;
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            width: 270px;
+            padding: 18px;
+            box-shadow: 0 15px 45px rgba(200, 169, 110, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: opacity 0.3s;
+        }
+
+        .mp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f4f4f4;
+            padding-bottom: 10px;
+        }
+
+        .mp-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mp-minimize {
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+            padding: 0;
+        }
+
+        .mp-minimize:hover {
+            color: #333;
+        }
+
+        .mp-track-info {
+            font-size: 0.85rem;
+            color: #222;
+            text-align: center;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 5px 0;
+        }
+
+        .mp-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mp-btn {
+            background: #f4f4f4;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            color: #555;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .mp-btn:hover {
+            background: #e0e0e0;
+            color: #111;
+        }
+
+        .mp-btn.mp-play {
+            width: 48px;
+            height: 48px;
+            background: #2a2a2a;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .mp-btn.mp-play:hover {
+            background: #111;
+            transform: scale(1.05);
+        }
+
+        .mp-playlist {
+            width: 100%;
+            padding: 8px;
+            font-size: 0.75rem;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            background: #fafafa;
+            color: #444;
+            outline: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* CTA Banner Azul Gradient */
+        #section-6 {
+            background: linear-gradient(115deg, rgba(0, 71, 171, 0.9), rgba(0, 191, 255, 0.85)) !important;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+        }
+
+        #section-6 img {
+            display: none !important;
+        }
+
+        #section-6 h2 {
+            color: #fff !important;
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        #section-6 p {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-size: 1.1rem;
+        }
+
+        /* Typing effect for Banner */
+        .typing-container {
+            display: inline-block;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .typing-txt {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--gold);
+            width: 0;
+            animation: typingBanner 6s steps(45, end) infinite, blink-caret 0.75s step-end infinite;
+        }
+
+        .stats-bar .typing-txt {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+        }
+
+        @keyframes typingBanner {
+
+            0%,
+            10% {
+                width: 0;
+            }
+
+            60%,
+            90% {
+                width: 100%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--gold)
+            }
+        }
+
+        @media(max-width: 900px) {
+            .typing-txt {
+                white-space: normal;
+                width: auto;
+                border: none !important;
+                animation: none !important;
+                opacity: 1 !important;
+            }
+
+            .stats-bar .typing-txt {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="home page-template page-template-templates page-template-home page-template-templateshome-php page page-id-1 wp-custom-logo">
+    <b class="animsition-loading"></b>
+    <div id="wrapper" class="loading">
+
+        <!-- ===== HEADER ===== -->
+        <header id="header">
+            <div class="container">
+                <strong class="logo revealed" data-reveal="left">
+                    <a href="#section-1">
+                        <span class="logo-name">MCP <span>Construções</span></span>
+                        <span class="logo-sub2">Engenharia e Obras</span>
+                    </a>
+                </strong>
+                <nav id="main-nav" class="revealed">
+                    <ul id="navigation">
+                        <li class="active"><a href="#section-1">Início</a></li>
+                        <li><a href="#section-2">Serviços</a></li>
+                        <li><a href="#section-3">Projetos</a></li>
+                        <li><a href="#section-4">Portfólio</a></li>
+                        <li><a href="#section-5">Sobre</a></li>
+                        <li><a href="#section-contact">Contato</a></li>
+                        <li><a href="tel:11999999999" class="btn-ligar">📞 Ligar Agora</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <a href="#" class="navbar-toggle revealed" data-reveal="left">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        </header>
+
+        <!-- ===== SECTION 1: HERO SLIDER ===== -->
+        <div id="section-1" class="visual">
+            <div class="home-slideshow">
+                <div class="slide bg-img revealed" data-reveal="left">
+                    <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1600&q=80"
+                        alt="Construção Civil de Alto Padrão">
+                    <div class="container">
+                        <div class="txt">
+                            <h1>Construção Civil<br><span style="color:#c8a96e;">de Alto Padrão</span></h1>
+                            <p style="color:rgba(255,255,255,0.8);margin-bottom:28px;font-family:'Poppins',sans-serif;">
+                                Mais de 15 anos construindo o futuro com excelência.</p>
+                            <a href="#section-contact" class="btn btn-white"><span>Solicite um Orçamento →</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide bg-img revealed" data-reveal="left">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80"
+                        alt="Obras Residenciais e Comerciais">
+                    <div class="container">
+                        <div class="txt">
+                            <h1>Obras Residenciais<br>e Comerciais</h1>
+                            <a href="#section-2" class="btn btn-white"><span>Nossos Serviços</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide bg-img revealed" data-reveal="left">
+                    <img src="https://images.unsplash.com/photo-1545670723-196ed0954986?w=1600&q=80"
+                        alt="Reformas e Ampliações">
+                    <div class="container">
+                        <div class="txt">
+                            <h1>Reformas e<br>Ampliações</h1>
+                            <a href="#section-contact" class="btn btn-white"><span>Fale Conosco</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide bg-img revealed" data-reveal="left">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80"
+                        alt="Construção Industrial">
+                    <div class="container">
+                        <div class="txt">
+                            <h1>Galpões e<br>Construção Industrial</h1>
+                            <a href="#section-4" class="btn btn-white"><span>Ver Portfólio</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="controls-bar revealed" data-reveal="left">
+                <div class="pagingInfo"></div>
+            </div>
+        </div>
+
+        <!-- ===== STATS BAR ===== -->
+        <div class="stats-bar">
+            <div class="container" style="justify-content: center;">
+                <h2 class="typing-container">
+                    <span class="typing-txt">NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.</span>
+                </h2>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 5: SOBRE NÓS (Movida para logo abaixo da Stats Bar) ===== -->
+        <div id="section-5" class="text-and-media">
+            <div class="container">
+                <div class="row">
+                    <div class="col" data-reveal="left"
+                        style="display: flex; flex-direction: column; justify-content: center;">
+                        <div class="holder" style="padding-right: 20px;">
+                            <h3 style="font-weight: 800; font-size: 2.2rem; color: #1a1a1a; margin-bottom: 25px;">Sobre
+                                Nós</h3>
+                            <div class="text-wrapper">
+                                <p>A MCP Construções nasceu da paixão por transformar projetos em realidade. Com uma
+                                    equipe multidisciplinar e processos otimizados, entregamos obras que superam as
+                                    expectativas de nossos clientes.</p>
+                                <p>Do alicerce ao acabamento, cada detalhe importa. Nossa trajetória é marcada pela
+                                    confiança conquistada através de resultados sólidos e transparentes.</p>
+                                <ul>
+                                    <li>Equipe técnica especializada</li>
+                                    <li>Materiais de alta qualidade</li>
+                                    <li>Cumprimento rigoroso de prazos</li>
+                                    <li>Acompanhamento personalizado</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" data-reveal="right">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&q=80"
+                            alt="Equipe MCP Construções"
+                            style="border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 2: SERVIÇOS (text-and-media) ===== -->
+        <div id="section-2" class="text-and-media">
+            <div class="container">
+
+                <div class="row" style="margin-bottom: 90px;">
+                    <div class="col" data-reveal="left">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=80"
+                            alt="Construção Residencial"
+                            style="border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="col" data-reveal="right"
+                        style="transition-delay: 0.3s; display: flex; flex-direction: column; justify-content: center;">
+                        <div class="holder" style="padding-left: 20px;">
+                            <span class="eyebrow" style="margin-bottom: 15px;">O Que Fazemos</span>
+                            <h3 style="font-size: 2.2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 25px;">
+                                Construção Residencial</h3>
+                            <div class="text-wrapper" style="font-size: 0.95rem; line-height: 1.8; color: #444;">
+                                <p style="margin-bottom: 15px;">A MCP Construções é especializada em obras residenciais
+                                    de alto padrão, desenvolvendo
+                                    projetos personalizados que transformam sonhos em realidade com qualidade e
+                                    eficiência.</p>
+                                <p style="margin-bottom: 20px;">Nossa equipe multidisciplinar acompanha cada etapa da
+                                    obra, do projeto à entrega,
+                                    garantindo prazo e orçamento acordados.</p>
+                                <ul style="padding-left: 20px; list-style-type: disc;">
+                                    <li style="margin-bottom: 6px;">Projetos arquitetônicos personalizados</li>
+                                    <li style="margin-bottom: 6px;">Acabamento de alto padrão</li>
+                                    <li style="margin-bottom: 6px;">Cumprimento rigoroso de prazos</li>
+                                    <li style="margin-bottom: 6px;">Acompanhamento técnico completo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 80px;">
+                    <!-- A Imagem DEVE ser a primeira coluna para o CSS do tema não bugar no responsivo nem no zigue-zague -->
+                    <div class="col" data-reveal="right">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1000&q=80"
+                            alt="Obras Comerciais e Industriais"
+                            style="border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="col" data-reveal="left"
+                        style="transition-delay: 0.3s; display: flex; flex-direction: column; justify-content: center;">
+                        <div class="holder" style="padding-right: 20px;">
+                            <h3 style="font-size: 2.2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 25px;">Obras
+                                Comerciais e Industriais</h3>
+                            <div class="text-wrapper" style="font-size: 0.95rem; line-height: 1.8; color: #444;">
+                                <p style="margin-bottom: 15px;">Galpões, lojas, escritórios e estruturas industriais
+                                    prontos para o seu negócio.
+                                    Trabalhamos com planejamento preciso e execução eficiente para minimizar impactos
+                                    nas operações.</p>
+                                <p style="margin-bottom: 20px;">Na execução, recorremos a materiais e técnicas modernas
+                                    aliadas às melhores práticas
+                                    do mercado, com compromisso com inovação, qualidade e durabilidade.</p>
+                                <ul style="padding-left: 20px; list-style-type: disc;">
+                                    <li style="margin-bottom: 6px;">Galpões e estruturas industriais</li>
+                                    <li style="margin-bottom: 6px;">Reformas e ampliações comerciais</li>
+                                    <li style="margin-bottom: 6px;">Instalações elétricas e hidráulicas certificadas
+                                    </li>
+                                    <li style="margin-bottom: 6px;">Projetos e consultoria técnica especializada</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cards de serviços -->
+                <div class="service-grid">
+                    <div class="svc-card" data-reveal="up" style="transition-delay: 0.1s;">
+                        <div class="svc-icon">🏠</div>
+                        <h4>Construção Residencial</h4>
+                        <p>Casas, apartamentos e condomínios com acabamento de alto padrão e projetos
+                            personalizados.</p>
+                        <a href="#section-contact" class="svc-link">Saiba Mais →</a>
+                    </div>
+                    <div class="svc-card" data-reveal="up" style="transition-delay: 0.2s;">
+                        <div class="svc-icon">🔨</div>
+                        <h4>Reformas e Ampliações</h4>
+                        <p>Reformas completas com planejamento detalhado e execução eficiente para transformar
+                            seu espaço.</p>
+                        <a href="#section-contact" class="svc-link">Saiba Mais →</a>
+                    </div>
+                    <div class="svc-card" data-reveal="up" style="transition-delay: 0.3s;">
+                        <div class="svc-icon">🏢</div>
+                        <h4>Construção Comercial</h4>
+                        <p>Galpões, lojas e escritórios prontos para o seu negócio, focando em funcionalidade e
+                            design.</p>
+                        <a href="#section-contact" class="svc-link">Saiba Mais →</a>
+                    </div>
+                    <div class="svc-card" data-reveal="up" style="transition-delay: 0.4s;">
+                        <div class="svc-icon">🎨</div>
+                        <h4>Acabamento e Pintura</h4>
+                        <p>Pintura interna, externa e revestimentos decorativos com materiais de primeiríssima
+                            qualidade.</p>
+                        <a href="#section-contact" class="svc-link">Saiba Mais →</a>
+                    </div>
+                    <div class="svc-card" data-reveal="up" style="transition-delay: 0.5s;">
+                        <div class="svc-icon">⚡</div>
+                        <h4>Instalações Elétricas e Hidráulicas</h4>
+                        <p>Projetos e manutenção com materiais certificados e profissionais altamente
+                            qualificados.</p>
+                        <a href="#section-contact" class="svc-link">Saiba Mais →</a>
+                    </div>
+                    <div class="svc-card" data-reveal="up" style="transition-delay: 0.6s;">
+                        <div class="svc-icon">📋</div>
+                        <h4>Projetos e Consultoria</h4>
+                        <p>Acompanhamento técnico especializado do projeto à entrega final da obra.</p>
+                        <a href="#section-contact" class="svc-link">Saiba Mais →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== SECTION 3: PROJETOS RECENTES (projects-block) ===== -->
+        <div id="section-3" class="projects-block">
+            <div class="container">
+                <h3 data-reveal="left">PROJETOS RECENTES</h3>
+                <ul class="videos-list" data-reveal="left">
+                    <li data-reveal="left">
+                        <div class="video-box bg-img">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&q=80"
+                                alt="Residencial Vila Nova">
+                            <a href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80"
+                                data-fancybox="gallery" class="btn-play"></a>
+                        </div>
+                    </li>
+                    <li data-reveal="left">
+                        <div class="video-box bg-img">
+                            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&q=80"
+                                alt="Centro Empresarial Horizonte">
+                            <a href="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80"
+                                data-fancybox="gallery" class="btn-play"></a>
+                        </div>
+                    </li>
+                    <li data-reveal="left">
+                        <div class="video-box bg-img">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80"
+                                alt="Galpão Logístico LP-12">
+                            <a href="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80"
+                                data-fancybox="gallery" class="btn-play"></a>
+                        </div>
+                    </li>
+                    <li data-reveal="left">
+                        <div class="video-box bg-img">
+                            <img src="https://images.unsplash.com/photo-1545670723-196ed0954986?w=400&q=80"
+                                alt="Reforma Residencial Completa">
+                            <a href="https://images.unsplash.com/photo-1545670723-196ed0954986?w=1600&q=80"
+                                data-fancybox="gallery" class="btn-play"></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 4: PORTFÓLIO (recent-projects + isotope) ===== -->
+        <div id="section-4" class="recent-projects">
+            <div class="container">
+                <div class="row">
+                    <div class="col" data-reveal="right">
+                        <h2>PORTFÓLIO</h2>
+                    </div>
+                    <div class="col">
+                        <ul class="filter-nav">
+                            <li class="active"><a href="#" data-filter="*">TODOS</a></li>
+                            <li><a href="#" data-filter=".filter-res">RESIDENCIAL</a></li>
+                            <li><a href="#" data-filter=".filter-com">COMERCIAL</a></li>
+                            <li><a href="#" data-filter=".filter-ind">INDUSTRIAL</a></li>
+                            <li><a href="#" data-filter=".filter-ref">REFORMA</a></li>
+                            <li><a href="#" data-filter=".filter-aca">ACABAMENTO</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container lg">
+                <div class="grid" data-reveal="right">
+
+                    <div class="grid-item filter-res">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80"
+                                    alt="Residencial Vila Nova"></div>
+                            <div class="holder"><span class="ttl">RESIDENCIAL</span><span>Residencial Vila Nova</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-com">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80"
+                                    alt="Centro Empresarial Horizonte"></div>
+                            <div class="holder"><span class="ttl">COMERCIAL</span><span>Centro Empresarial
+                                    Horizonte</span></div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-ind">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80"
+                                    alt="Galpão Logístico LP-12"></div>
+                            <div class="holder"><span class="ttl">INDUSTRIAL</span><span>Galpão Logístico LP-12</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-res filter-ref">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80"
+                                    alt="Casa Alto Padrão SP"></div>
+                            <div class="holder"><span class="ttl">RESIDENCIAL, REFORMA</span><span>Casa Alto Padrão
+                                    SP</span></div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-com filter-aca">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=600&q=80"
+                                    alt="Escritório Corporativo Premium"></div>
+                            <div class="holder"><span class="ttl">COMERCIAL, ACABAMENTO</span><span>Escritório
+                                    Corporativo Premium</span></div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-ref filter-aca">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80"
+                                    alt="Reforma Completa Campinas"></div>
+                            <div class="holder"><span class="ttl">REFORMA, ACABAMENTO</span><span>Reforma Completa
+                                    Campinas</span></div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-res hidden">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80"
+                                    alt="Condomínio Guarulhos"></div>
+                            <div class="holder"><span class="ttl">RESIDENCIAL</span><span>Condomínio Residencial
+                                    Guarulhos</span></div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-ind hidden">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+                                    alt="Complexo Industrial ABC"></div>
+                            <div class="holder"><span class="ttl">INDUSTRIAL</span><span>Complexo Industrial ABC</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-aca hidden">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&q=80"
+                                    alt="Acabamento Residencial Alto Padrão"></div>
+                            <div class="holder"><span class="ttl">ACABAMENTO</span><span>Acabamento Residencial Alto
+                                    Padrão</span></div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-com hidden">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80"
+                                    alt="Loja Shopping Center"></div>
+                            <div class="holder"><span class="ttl">COMERCIAL</span><span>Loja Shopping Center
+                                    Campinas</span></div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-ref hidden">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=600&q=80"
+                                    alt="Reforma Comercial SP"></div>
+                            <div class="holder"><span class="ttl">REFORMA</span><span>Reforma Comercial São Paulo</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="grid-item filter-res filter-aca hidden">
+                        <a href="#" class="project-item">
+                            <div class="bg-img"><img src="#"
+                                    data-src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80"
+                                    alt="Apartamento Alto Padrão"></div>
+                            <div class="holder"><span class="ttl">RESIDENCIAL, ACABAMENTO</span><span>Apartamento Alto
+                                    Padrão SP</span></div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="btn-holder btn-download-more">
+                <a href="#" class="btn"><span>CARREGAR MAIS</span></a>
+            </div>
+        </div>
+
+
+
+        <!-- ===== SECTION 6: CTA BANNER (details-section) ===== -->
+        <div id="section-6" class="details-section bg-img">
+            <img src="nobislux.com/wp-content/themes/nobislux/images/bg-01.jpg" alt="Na MCP cada detalhe é importante.">
+            <div class="container">
+                <div class="row">
+                    <div class="col" data-reveal="left">
+                        <h2>NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.</h2>
+                        <p>Estamos sempre empenhados em ajudar nossos clientes em cada projeto.</p>
+                    </div>
+                    <div class="col text-right">
+                        <a href="tel:11999999999" class="btn btn-white"><span>LIGAR AGORA</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION CONTACT: CONTATO ===== -->
+        <div id="section-contact" class="contact-wrap">
+            <div class="container">
+                <div style="text-align:center;margin-bottom:60px;" data-reveal="up">
+                    <span class="eyebrow">Contato</span>
+                    <h2
+                        style="font-size:2.8rem;font-weight:800;color:#1a1a1a;line-height:1.2;font-family:'Poppins',sans-serif;margin:0;">
+                        Vamos conversar sobre<br>seu projeto</h2>
+                </div>
+                <div class="contact-inner">
+                    <div data-reveal="left">
+                        <div class="c-info-item">
+                            <div class="c-icon">📍</div>
+                            <div>
+                                <h5>Endereço</h5>
+                                <p>Lisboa — Portugal</p>
+                            </div>
+                        </div>
+                        <div class="c-info-item">
+                            <div class="c-icon">📞</div>
+                            <div>
+                                <h5>Telefone</h5><a href="tel:+351934627192">+351 934 627 192</a>
+                            </div>
+                        </div>
+                        <div class="c-info-item">
+                            <div class="c-icon">✉️</div>
+                            <div>
+                                <h5>E-mail</h5><a href="mailto:contato@mcpconstrucoes.pt">contato@mcpconstrucoes.pt</a>
+                            </div>
+                        </div>
+                        <div class="c-info-item">
+                            <div class="c-icon">⏰</div>
+                            <div>
+                                <h5>Horário</h5>
+                                <p>Seg–Sex: 08h às 18h</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c-form" data-reveal="right">
+                        <form id="mcp-form">
+                            <div class="frow">
+                                <div class="fg"><label>Nome completo</label><input type="text" name="name"
+                                        placeholder="João Silva" required>
+                                </div>
+                                <div class="fg"><label>Telefone</label><input type="tel" name="phone"
+                                        placeholder="+351 934 627 192" required>
+                                </div>
+                            </div>
+                            <div class="fg"><label>E-mail</label><input type="email" name="email"
+                                    placeholder="joao@email.com" required></div>
+                            <div class="fg">
+                                <label>Tipo de serviço</label>
+                                <select name="service" required>
+                                    <option value="">Selecione...</option>
+                                    <option>Construção Residencial</option>
+                                    <option>Reforma e Ampliação</option>
+                                    <option>Construção Comercial</option>
+                                    <option>Acabamento e Pintura</option>
+                                    <option>Instalações Elétricas/Hidráulicas</option>
+                                    <option>Projetos e Consultoria</option>
+                                </select>
+                            </div>
+                            <div class="fg"><label>Descreva seu projeto</label><textarea name="message"
+                                    placeholder="Fale um pouco sobre a obra que deseja realizar..."></textarea></div>
+                            <button type="submit" class="btn btn-black btn-send"><span>Enviar Mensagem</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer id="footer">
+            <div class="holder">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4>MCP CONSTRUÇÕES</h4>
+                            <p
+                                style="color:rgba(255,255,255,0.5);font-size:0.82rem;line-height:1.8;max-width:230px;font-family:'Poppins',sans-serif;">
+                                Mais de 15 anos entregando obras com qualidade, prazo e compromisso.</p>
+                        </div>
+                        <div class="col">
+                            <h4>LOCALIZAÇÃO</h4>
+                            Lisboa<br>Portugal
+                        </div>
+                        <div class="col">
+                            <h4>CONTACTOS</h4>
+                            <p><a href="tel:+351934627192">+351 934 627 192</a></p>
+                            <p><a href="mailto:contato@mcpconstrucoes.pt">contato@mcpconstrucoes.pt</a></p>
+                            <p
+                                style="color:rgba(255,255,255,0.4);font-size:0.8rem;font-family:'Poppins',sans-serif;margin-top:5px;">
+                                Seg–Sex: 08h às 18h</p>
+                        </div>
+                        <div class="col">
+                            <ul class="social">
+                                <li><a href="#" target="_blank" rel="noopener"><i class="fab fa-instagram"
+                                            title="instagram"></i></a></li>
+                                <li><a href="#" target="_blank" rel="noopener"><i class="fab fa-facebook-f"
+                                            title="facebook"></i></a></li>
+                                <li><a href="#" target="_blank" rel="noopener"><i class="fab fa-linkedin"
+                                            title="linkedin"></i></a></li>
+                                <li><a href="https://wa.me/351934627192" target="_blank" rel="noopener"><i
+                                            class="fab fa-whatsapp" title="whatsapp"></i></a></li>
+                            </ul>
+                            <ul class="footer-list" style="margin-top:20px;">
+                                <li><a href="#">Política de Privacidade</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <p>© 2024 MCP Construções Engenharia e Obras. Todos os direitos reservados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- / wrapper -->
+
+    <!-- ===== MUSIC PLAYER FLUTUANTE ===== -->
+    <div class="mcp-music-player minimized" id="mcpMusicPlayer">
+        <button class="mp-toggle" id="mpToggle" title="Ouvir Hinos">
+            <i class="fas fa-compact-disc"></i>
+        </button>
+
+        <div class="mp-panel">
+            <div class="mp-header">
+                <div class="mp-title">
+                    <i class="fas fa-compact-disc" id="mpDisc"></i> <span>Hinos e Louvores</span>
+                </div>
+                <!-- fechar player reduz pro btn -->
+                <button class="mp-minimize" id="mpMinimize" title="Minimizar"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="mp-track-info" id="mpTrackName">Carregando...</div>
+
+            <div class="mp-controls">
+                <button class="mp-btn" id="mpPrev"><i class="fas fa-backward"></i></button>
+                <button class="mp-btn mp-play" id="mpPlay"><i class="fas fa-play"></i></button>
+                <button class="mp-btn" id="mpNext"><i class="fas fa-forward"></i></button>
+            </div>
+
+            <select class="mp-playlist" id="mpPlaylist" title="Escolha um hino">
+                <!-- opções geradas peo JS geradas logo abxo -->
+            </select>
+
+            <audio id="mpAudio" preload="auto"></audio>
+        </div>
+    </div>
+
+    <!-- ===== WHATSAPP FLUTUANTE AVANÇADO ===== -->
+    <div class="whatsapp-container">
+        <a href="https://wa.me/351934627192" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <div class="wa-tooltip">
+                <img src="joao_victor.png" alt="Joao Victor" class="wa-rosto">
+                <div class="wa-user-info">
+                    <span class="wa-name">Joao Victor</span>
+                    <span class="wa-status">• Online agora</span>
+                </div>
+            </div>
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- ===== SCRIPTS LOCAIS DO TEMA NOBISLUX ===== -->
+    <!-- jQuery -->
+    <script src="nobislux.com/wp-includes/js/jquery/jquery.min_ver=3.7.1.js"></script>
+    <script src="nobislux.com/wp-includes/js/jquery/jquery-migrate.min_ver=3.4.1.js"></script>
+    <!-- Plugins do tema -->
+    <script src="nobislux.com/wp-content/themes/nobislux/js/slick.min_ver=6.5.8.js"></script>
+    <script src="nobislux.com/wp-content/themes/nobislux/js/isotope.pkgd.min_ver=6.5.8.js"></script>
+    <script src="nobislux.com/wp-content/themes/nobislux/js/jquery.fancybox.min_ver=6.5.8.js"></script>
+    <script src="nobislux.com/wp-content/themes/nobislux/js/autoResizeTextarea_ver=6.5.8.js"></script>
+    <!-- Script principal do tema (inicializa slider, filtros, menu, imgToBg, smoothScroll) -->
+    <script src="nobislux.com/wp-content/themes/nobislux/js/scripts_ver=6.5.8.js"></script>
+
+    <script>
+        // ===== MCP INICIALIZAÇÕES ADICIONAIS =====
+        // Resetar scroll ao topo no refresh F5 (blindado contra hashes)
+        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+        window.scrollTo(0, 0);
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                window.scrollTo(0, 0);
+                if (window.location.hash) {
+                    history.replaceState('', document.title, window.location.pathname);
+                }
+            }, 10);
+        });
+
+        (function ($) {
+
+            // 1. Remove loading spinner
+            $('b.animsition-loading').hide();
+            $('#wrapper').removeClass('loading');
+            $(window).on('load', function () {
+                $('b.animsition-loading').hide();
+                $('#wrapper').removeClass('loading');
+            });
+
+            // 2. Scroll Reveal para elementos com data-reveal
+            var revEls = document.querySelectorAll('[data-reveal]');
+            function doReveal() {
+                revEls.forEach(function (el) {
+                    if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+                        el.classList.add('revealed');
+                    }
+                });
+            }
+            setTimeout(doReveal, 100);
+            window.addEventListener('scroll', doReveal);
+            window.addEventListener('load', doReveal);
+
+            // 3. Header muda cor ao scrollar
+            $(window).on('scroll', function () {
+                if ($(this).scrollTop() > 60) {
+                    $('#header').css('background', 'rgba(10,10,10,0.98)');
+                } else {
+                    $('#header').css('background', '');
+                }
+            });
+
+            // 4. Formulário de contato conectado ao Supabase
+            $('#mcp-form').on('submit', function (e) {
+                e.preventDefault();
+                var btn = $(this).find('.btn-send');
+                var formData = {
+                    name: $(this).find('input[name="name"]').val(),
+                    email: $(this).find('input[name="email"]').val(),
+                    phone: $(this).find('input[name="phone"]').val(),
+                    service: $(this).find('select[name="service"]').val(),
+                    message: $(this).find('textarea[name="message"]').val()
+                };
+
+                btn.text('Enviando...').prop('disabled', true);
+
+                fetch('https://qrqzvuoymajceqplmfmc.supabase.co/rest/v1/leads', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': 'sb_publishable_DCR4nu-D0VQMsDtsyGP5aQ_sjhpflKl',
+                        'Authorization': 'Bearer sb_publishable_DCR4nu-D0VQMsDtsyGP5aQ_sjhpflKl',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            btn.text('✔ Mensagem enviada! Entraremos em contato em breve.')
+                                .css({ background: '#27ae60', cursor: 'default', color: '#fff' });
+                        } else {
+                            btn.text('Erro ao enviar. Tente novamente.').prop('disabled', false);
+                        }
+                    })
+                    .catch(err => {
+                        btn.text('Erro de conexão.').prop('disabled', false);
+                    });
+            });
+
+            // 5. imgToBg para slides do hero (img[src] direto)
+            // O scripts.js usa data-src para portfolio; para slides com src direto, fazemos aqui:
+            $('.slide.bg-img > img').each(function () {
+                var src = $(this).attr('src');
+                if (src && src !== '#') {
+                    $(this).closest('.slide').css('background-image', 'url(' + src + ')');
+                    $(this).addClass('hidden');
+                }
+            });
+
+            // 6. video-box bg-img com src direto
+            $('.video-box.bg-img img').each(function () {
+                var src = $(this).attr('src');
+                if (src && src !== '#') {
+                    $(this).closest('.video-box').css('background-image', 'url(' + src + ')');
+                    $(this).addClass('hidden');
+                }
+            });
+
+            // 7. Music Player Flutuante
+            var tracks = [
+                { title: "Cristo Cura Sim (7)", src: "hinos/HARPA CRISTÃ _ CRISTO CURA SIM _ HINO 07 - WORSHIP.mp3" },
+                { title: "Oh, Jesus Me Ama (169)", src: "hinos/Oh, Jesus Me Ama _ Harpa Cristã 169 _ Hino de Salvação e Amor inexplicáve de jesusl ❤️.mp3" },
+                { title: "Grandioso És Tu (526)", src: "hinos/⭐© GRANDIOSO ÉS TU - Volnei da Costa e grupo C (Maranata) 526 Harpa.mp3" }
+            ];
+
+            var audioElem = document.getElementById('mpAudio');
+            var currentTrackIdx = 0;
+
+            function loadTrack(index) {
+                currentTrackIdx = index;
+                audioElem.src = tracks[index].src;
+                $('#mpTrackName').text(tracks[index].title);
+                $('#mpPlaylist').val(index);
+            }
+
+            function playAudio() {
+                audioElem.play().catch(function (err) { console.log("Auto-play pendente por interacao do usuario."); });
+                $('#mpPlay').html('<i class="fas fa-pause"></i>');
+                $('#mpDisc').addClass('fa-spin');
+            }
+
+            function pauseAudio() {
+                audioElem.pause();
+                $('#mpPlay').html('<i class="fas fa-play"></i>');
+                $('#mpDisc').removeClass('fa-spin');
+            }
+
+            $('#mpPlay').on('click', function () {
+                if (audioElem.paused) playAudio(); else pauseAudio();
+            });
+
+            $('#mpPrev').on('click', function () {
+                var newIdx = currentTrackIdx - 1;
+                if (newIdx < 0) newIdx = tracks.length - 1;
+                loadTrack(newIdx);
+                playAudio();
+            });
+
+            $('#mpNext').on('click', function () {
+                var newIdx = currentTrackIdx + 1;
+                if (newIdx >= tracks.length) newIdx = 0;
+                loadTrack(newIdx);
+                playAudio();
+            });
+
+            audioElem.addEventListener('ended', function () {
+                $('#mpNext').trigger('click');
+            });
+
+            tracks.forEach(function (t, i) {
+                $('#mpPlaylist').append('<option value="' + i + '">' + t.title + '</option>');
+            });
+
+            $('#mpPlaylist').on('change', function () {
+                loadTrack($(this).val());
+                playAudio();
+            });
+
+            $('#mpMinimize').on('click', function () {
+                $('#mcpMusicPlayer').addClass('minimized');
+            });
+
+            $('#mpToggle').on('click', function () {
+                $('#mcpMusicPlayer').removeClass('minimized');
+            });
+
+            loadTrack(0); // carrega info mas não toca direto por politicas de browser autoplay
+
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>
