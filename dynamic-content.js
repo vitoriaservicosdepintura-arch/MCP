@@ -1,6 +1,8 @@
 // Carrega e aplica dinamicamente o conteúdo salvo do Painel Admin (LocalStorage)
 document.addEventListener("DOMContentLoaded", function () {
     const defaultData = {
+        logo_img: "LOGO-1.png",
+        logo_size: "55",
         logo_texto_1: "MCP",
         logo_texto_2: "Construções",
         logo_sub: "Engenharia e Obras",
@@ -80,8 +82,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (el && text !== undefined) el.innerHTML = text;
     }
 
-    /* ==== LOGO ==== */
-    // Substituído por hardcode de imagem LOGO-1.png em index.html
+    /* ==== LOGO DINAMICA ==== */
+    const headerLogo = document.querySelector('.logo img');
+    if (headerLogo) {
+        if (md.logo_img) headerLogo.src = md.logo_img;
+        if (md.logo_size) headerLogo.style.maxHeight = md.logo_size + "px";
+    }
+
+    const footerLogo = document.querySelector('footer .col:nth-child(1) img');
+    if (footerLogo) {
+        if (md.logo_img) footerLogo.src = md.logo_img;
+        if (md.logo_size) footerLogo.style.maxHeight = (Math.max(20, md.logo_size - 10)) + "px"; // Rodapé um pouco menor
+    }
 
     /* ==== SLIDES ==== */
     const slides = document.querySelectorAll('#section-1 .slide');

@@ -346,326 +346,354 @@
             <!-- GERAL / LOGO -->
             <div id="geral" class="section-panel active">
                 <h3>Configurações Gerais</h3>
-                <div class="form-group">
-                    <label>Logo Texto Principal</label>
-                    <input type="text" id="logo_texto_1" placeholder="Ex: MCP">
+
+                <div class="sub-block">
+                    <h4>Logotipo Principal (Imagem)</h4>
+                    <p style="font-size:0.85rem; color:#666; margin-top:-5px;">Faça upload da sua logo e ajuste o
+                        tamanho de exibição no cabeçalho.</p>
+                    <div class="form-group">
+                        <label>Upload / URL da Logo</label>
+                        <div class="upload-row">
+                            <input type="file" accept="image/*" onchange="handleUpload(this, 'logo_img')">
+                            <input type="text" id="logo_img" placeholder="Ex: URL da imagem"
+                                oninput="previewImg('logo_img', 'prev_logo')">
+                        </div>
+                        <img id="prev_logo" class="image-preview" src=""
+                            style="background:#eee; padding:10px; border-radius:10px; max-width:200px; display:none;">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tamanho da Logo (Altura em Pixels): <strong id="logo_size_val">55px</strong></label>
+                        <input type="range" id="logo_size" min="30" max="150" value="55" step="5"
+                            oninput="document.getElementById('logo_size_val').innerText = this.value + 'px'">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Logo Texto Destaque (Dourado)</label>
-                    <input type="text" id="logo_texto_2" placeholder="Ex: Construções">
+
+                <div class="sub-block">
+                    <h4>Logo em Texto (Reserva)</h4>
+                    <div class="form-group">
+                        <label>Logo Texto Principal</label>
+                        <input type="text" id="logo_texto_1" placeholder="Ex: MCP">
+                    </div>
+                    <div class="form-group">
+                        <label>Logo Texto Destaque (Dourado)</label>
+                        <input type="text" id="logo_texto_2" placeholder="Ex: Construções">
+                    </div>
+                    <div class="form-group">
+                        <label>Logo Subtítulo</label>
+                        <input type="text" id="logo_sub" placeholder="Ex: Engenharia e Obras">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Logo Subtítulo</label>
-                    <input type="text" id="logo_sub" placeholder="Ex: Engenharia e Obras">
+
+                <!-- INÍCIO -->
+                <div id="inicio" class="section-panel">
+                    <h3>Seção Início (Banner)</h3>
+
+                    <div class="sub-block">
+                        <h4>Slide 1</h4>
+                        <div class="form-group">
+                            <label>Título e Destaque</label>
+                            <input type="text" id="slide1_tit1" placeholder="Ex: Construção Civil"
+                                style="margin-bottom:8px;">
+                            <input type="text" id="slide1_tit2" placeholder="Ex: de Alto Padrão (Dourado)">
+                        </div>
+                        <div class="form-group">
+                            <label>Subtítulo</label>
+                            <input type="text" id="slide1_sub" placeholder="Ex: Mais de 15 anos construindo...">
+                        </div>
+                        <div class="form-group">
+                            <label>Upload ou URL da Imagem</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'slide1_img')">
+                                <input type="text" id="slide1_img" placeholder="URL da dimagem"
+                                    oninput="previewImg('slide1_img', 'prev_slide1')">
+                            </div>
+                            <img id="prev_slide1" class="image-preview" src="">
+                        </div>
+                    </div>
+
+                    <div class="sub-block">
+                        <h4>Slide 2</h4>
+                        <div class="form-group">
+                            <label>Título e Destaque</label>
+                            <input type="text" id="slide2_tit1" placeholder="Ex: Obras Residenciais"
+                                style="margin-bottom:8px;">
+                            <input type="text" id="slide2_tit2" placeholder="Ex: e Comerciais">
+                        </div>
+                        <div class="form-group">
+                            <label>Upload ou URL da Imagem</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'slide2_img')">
+                                <input type="text" id="slide2_img" placeholder="URL da imagem"
+                                    oninput="previewImg('slide2_img', 'prev_slide2')">
+                            </div>
+                            <img id="prev_slide2" class="image-preview" src="">
+                        </div>
+                    </div>
+
+                    <div class="sub-block">
+                        <h4>Slide 3</h4>
+                        <div class="form-group">
+                            <label>Título e Destaque</label>
+                            <input type="text" id="slide3_tit1" placeholder="Ex: Reformas e" style="margin-bottom:8px;">
+                            <input type="text" id="slide3_tit2" placeholder="Ex: Ampliações">
+                        </div>
+                        <div class="form-group">
+                            <label>Upload ou URL da Imagem</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'slide3_img')">
+                                <input type="text" id="slide3_img" placeholder="URL"
+                                    oninput="previewImg('slide3_img', 'prev_slide3')">
+                            </div>
+                            <img id="prev_slide3" class="image-preview" src="">
+                        </div>
+                    </div>
+
+                    <div class="sub-block">
+                        <h4>Slide 4</h4>
+                        <div class="form-group">
+                            <label>Título e Destaque</label>
+                            <input type="text" id="slide4_tit1" placeholder="Ex: Galpões e" style="margin-bottom:8px;">
+                            <input type="text" id="slide4_tit2" placeholder="Ex: Construção Industrial">
+                        </div>
+                        <div class="form-group">
+                            <label>Upload ou URL da Imagem</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'slide4_img')">
+                                <input type="text" id="slide4_img" placeholder="URL"
+                                    oninput="previewImg('slide4_img', 'prev_slide4')">
+                            </div>
+                            <img id="prev_slide4" class="image-preview" src="">
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="form-group">
+                        <label>Texto Secundário Animado (Estatísticas/Banner Azul)</label>
+                        <input type="text" id="stats_text" placeholder="Ex: NA MCP CONSTRUÇÕES, CADA DETALHE...">
+                    </div>
                 </div>
+
+                <!-- SERVIÇOS -->
+                <div id="servicos" class="section-panel">
+                    <h3>Seção Serviços</h3>
+
+                    <div class="sub-block">
+                        <h4>Bloco 1</h4>
+                        <div class="form-group">
+                            <label>Título Bloco 1</label>
+                            <input type="text" id="serv_tit1" placeholder="Construção Residencial">
+                        </div>
+                        <div class="form-group">
+                            <label>Texto Bloco 1</label>
+                            <textarea id="serv_txt1"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload de Imagem Bloco 1</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'serv_img1')">
+                                <input type="text" id="serv_img1" oninput="previewImg('serv_img1', 'prev_serv1')">
+                            </div>
+                            <img id="prev_serv1" class="image-preview" src="">
+                        </div>
+                    </div>
+
+                    <div class="sub-block">
+                        <h4>Bloco 2</h4>
+                        <div class="form-group">
+                            <label>Título Bloco 2</label>
+                            <input type="text" id="serv_tit2" placeholder="Obras Comerciais e Industriais">
+                        </div>
+                        <div class="form-group">
+                            <label>Texto Bloco 2</label>
+                            <textarea id="serv_txt2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload de Imagem Bloco 2</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'serv_img2')">
+                                <input type="text" id="serv_img2" oninput="previewImg('serv_img2', 'prev_serv2')">
+                            </div>
+                            <img id="prev_serv2" class="image-preview" src="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJETOS RECENTES -->
+                <div id="projetos" class="section-panel">
+                    <h3>Seção Projetos Recentes</h3>
+
+                    <div class="form-group">
+                        <label>Título da Seção</label>
+                        <input type="text" id="proj_tit" placeholder="Ex: PROJETOS RECENTES">
+                    </div>
+
+                    <div class="sub-block">
+                        <h4>Projeto 1</h4>
+                        <div class="form-group">
+                            <label>Nome do Projeto (Acessibilidade)</label>
+                            <input type="text" id="proj1_nome" placeholder="Residencial Vila Nova">
+                            <label style="margin-top:10px;">Upload / URL</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'proj1_img')">
+                                <input type="text" id="proj1_img" oninput="previewImg('proj1_img', 'prev_proj1')">
+                            </div>
+                            <img id="prev_proj1" class="image-preview" src="">
+                        </div>
+                    </div>
+
+                    <div class="sub-block">
+                        <h4>Projeto 2</h4>
+                        <div class="form-group">
+                            <label>Nome do Projeto (Acessibilidade)</label>
+                            <input type="text" id="proj2_nome" placeholder="Centro Empresarial">
+                            <label style="margin-top:10px;">Upload / URL</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'proj2_img')">
+                                <input type="text" id="proj2_img" oninput="previewImg('proj2_img', 'prev_proj2')">
+                            </div>
+                            <img id="prev_proj2" class="image-preview" src="">
+                        </div>
+                    </div>
+
+                    <div class="sub-block">
+                        <h4>Projeto 3</h4>
+                        <div class="form-group">
+                            <label>Nome do Projeto (Acessibilidade)</label>
+                            <input type="text" id="proj3_nome" placeholder="Muro de Arrimo">
+                            <label style="margin-top:10px;">Upload / URL</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'proj3_img')">
+                                <input type="text" id="proj3_img" oninput="previewImg('proj3_img', 'prev_proj3')">
+                            </div>
+                            <img id="prev_proj3" class="image-preview" src="">
+                        </div>
+                    </div>
+
+                    <div class="sub-block">
+                        <h4>Projeto 4</h4>
+                        <div class="form-group">
+                            <label>Nome do Projeto (Acessibilidade)</label>
+                            <input type="text" id="proj4_nome" placeholder="Projeto Comercial">
+                            <label style="margin-top:10px;">Upload / URL</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleUpload(this, 'proj4_img')">
+                                <input type="text" id="proj4_img" oninput="previewImg('proj4_img', 'prev_proj4')">
+                            </div>
+                            <img id="prev_proj4" class="image-preview" src="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PORTFÓLIO -->
+                <div id="portfolio" class="section-panel">
+                    <h3>Menu Portfólio (Fotos)</h3>
+                    <p>Aqui você adiciona as fotos que aparecerão na guia de Portfólio, no site as fotos ganham as
+                        categorias de: Residencial, Comercial, Industrial, Reforma, Acabamento e também o filtro de
+                        "Todos".
+                        Você pode adicionar quantas quiser, o layout da grade se adapta automaticamente.</p>
+
+                    <div class="header-bar"
+                        style="position:static; padding:15px; margin-bottom:20px; box-shadow:none; border: 1px solid #ddd;">
+                        <h4 style="margin:0;">Projetos Cadastrados</h4>
+                        <button type="button" class="btn-save" onclick="addPortItem()"><i class="fas fa-plus"></i>
+                            Adicionar
+                            Projeto</button>
+                    </div>
+
+                    <div id="portfolio-container">
+                        <!-- Gerado dinamicamente -->
+                    </div>
+                </div>
+
+                <!-- SOBRE -->
+                <div id="sobre" class="section-panel">
+                    <h3>Seção Sobre Nós</h3>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" id="sobre_tit" placeholder="Sobre Nós">
+                    </div>
+                    <div class="form-group">
+                        <label>Texto Completo (Habilita HTML)</label>
+                        <textarea id="sobre_txt"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload da Imagem Sobre Nós</label>
+                        <div class="upload-row">
+                            <input type="file" accept="image/*" onchange="handleUpload(this, 'sobre_img')">
+                            <input type="text" id="sobre_img" oninput="previewImg('sobre_img', 'prev_sobre')">
+                        </div>
+                        <img id="prev_sobre" class="image-preview" src="">
+                    </div>
+                </div>
+
+                <!-- CONTATO -->
+                <div id="contato" class="section-panel">
+                    <h3>Informações de Contato</h3>
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input type="text" id="contato_end" placeholder="Lisboa — Portugal">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="text" id="contato_tel" placeholder="+351 934 627 192">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="text" id="contato_email" placeholder="contato@mcpconstrucoes.pt">
+                    </div>
+                    <div class="form-group">
+                        <label>Horário</label>
+                        <input type="text" id="contato_hr" placeholder="Seg–Sex: 08h às 18h">
+                    </div>
+                    <div class="sub-block">
+                        <h4>Informações Extra do Rodapé (Footer)</h4>
+                        <div class="form-group">
+                            <label>Pequeno texto de descrição no rodapé</label>
+                            <input type="text" id="footer_desc" placeholder="Ex: Mais de 15 anos entregando obras...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA BANNER -->
+                <div id="cta" class="section-panel">
+                    <h3>Banner Chamada para Ação (Final da Página)</h3>
+                    <div class="form-group">
+                        <label>Título do Banner</label>
+                        <input type="text" id="cta_tit"
+                            placeholder="Ex: NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.">
+                    </div>
+                    <div class="form-group">
+                        <label>Subtítulo do Banner</label>
+                        <input type="text" id="cta_sub"
+                            placeholder="Ex: Estamos sempre empenhados em ajudar nossos clientes.">
+                    </div>
+                    <div class="form-group">
+                        <label>Imagem de Fundo (Background)</label>
+                        <div class="upload-row">
+                            <input type="file" accept="image/*" onchange="handleUpload(this, 'cta_img')">
+                            <input type="text" id="cta_img" oninput="previewImg('cta_img', 'prev_cta')">
+                        </div>
+                        <img id="prev_cta" class="image-preview" src="">
+                    </div>
+                </div>
+
             </div>
-
-            <!-- INÍCIO -->
-            <div id="inicio" class="section-panel">
-                <h3>Seção Início (Banner)</h3>
-
-                <div class="sub-block">
-                    <h4>Slide 1</h4>
-                    <div class="form-group">
-                        <label>Título e Destaque</label>
-                        <input type="text" id="slide1_tit1" placeholder="Ex: Construção Civil"
-                            style="margin-bottom:8px;">
-                        <input type="text" id="slide1_tit2" placeholder="Ex: de Alto Padrão (Dourado)">
-                    </div>
-                    <div class="form-group">
-                        <label>Subtítulo</label>
-                        <input type="text" id="slide1_sub" placeholder="Ex: Mais de 15 anos construindo...">
-                    </div>
-                    <div class="form-group">
-                        <label>Upload ou URL da Imagem</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'slide1_img')">
-                            <input type="text" id="slide1_img" placeholder="URL da dimagem"
-                                oninput="previewImg('slide1_img', 'prev_slide1')">
-                        </div>
-                        <img id="prev_slide1" class="image-preview" src="">
-                    </div>
-                </div>
-
-                <div class="sub-block">
-                    <h4>Slide 2</h4>
-                    <div class="form-group">
-                        <label>Título e Destaque</label>
-                        <input type="text" id="slide2_tit1" placeholder="Ex: Obras Residenciais"
-                            style="margin-bottom:8px;">
-                        <input type="text" id="slide2_tit2" placeholder="Ex: e Comerciais">
-                    </div>
-                    <div class="form-group">
-                        <label>Upload ou URL da Imagem</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'slide2_img')">
-                            <input type="text" id="slide2_img" placeholder="URL da imagem"
-                                oninput="previewImg('slide2_img', 'prev_slide2')">
-                        </div>
-                        <img id="prev_slide2" class="image-preview" src="">
-                    </div>
-                </div>
-
-                <div class="sub-block">
-                    <h4>Slide 3</h4>
-                    <div class="form-group">
-                        <label>Título e Destaque</label>
-                        <input type="text" id="slide3_tit1" placeholder="Ex: Reformas e" style="margin-bottom:8px;">
-                        <input type="text" id="slide3_tit2" placeholder="Ex: Ampliações">
-                    </div>
-                    <div class="form-group">
-                        <label>Upload ou URL da Imagem</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'slide3_img')">
-                            <input type="text" id="slide3_img" placeholder="URL"
-                                oninput="previewImg('slide3_img', 'prev_slide3')">
-                        </div>
-                        <img id="prev_slide3" class="image-preview" src="">
-                    </div>
-                </div>
-
-                <div class="sub-block">
-                    <h4>Slide 4</h4>
-                    <div class="form-group">
-                        <label>Título e Destaque</label>
-                        <input type="text" id="slide4_tit1" placeholder="Ex: Galpões e" style="margin-bottom:8px;">
-                        <input type="text" id="slide4_tit2" placeholder="Ex: Construção Industrial">
-                    </div>
-                    <div class="form-group">
-                        <label>Upload ou URL da Imagem</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'slide4_img')">
-                            <input type="text" id="slide4_img" placeholder="URL"
-                                oninput="previewImg('slide4_img', 'prev_slide4')">
-                        </div>
-                        <img id="prev_slide4" class="image-preview" src="">
-                    </div>
-                </div>
-
-                <hr>
-                <div class="form-group">
-                    <label>Texto Secundário Animado (Estatísticas/Banner Azul)</label>
-                    <input type="text" id="stats_text" placeholder="Ex: NA MCP CONSTRUÇÕES, CADA DETALHE...">
-                </div>
-            </div>
-
-            <!-- SERVIÇOS -->
-            <div id="servicos" class="section-panel">
-                <h3>Seção Serviços</h3>
-
-                <div class="sub-block">
-                    <h4>Bloco 1</h4>
-                    <div class="form-group">
-                        <label>Título Bloco 1</label>
-                        <input type="text" id="serv_tit1" placeholder="Construção Residencial">
-                    </div>
-                    <div class="form-group">
-                        <label>Texto Bloco 1</label>
-                        <textarea id="serv_txt1"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Upload de Imagem Bloco 1</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'serv_img1')">
-                            <input type="text" id="serv_img1" oninput="previewImg('serv_img1', 'prev_serv1')">
-                        </div>
-                        <img id="prev_serv1" class="image-preview" src="">
-                    </div>
-                </div>
-
-                <div class="sub-block">
-                    <h4>Bloco 2</h4>
-                    <div class="form-group">
-                        <label>Título Bloco 2</label>
-                        <input type="text" id="serv_tit2" placeholder="Obras Comerciais e Industriais">
-                    </div>
-                    <div class="form-group">
-                        <label>Texto Bloco 2</label>
-                        <textarea id="serv_txt2"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Upload de Imagem Bloco 2</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'serv_img2')">
-                            <input type="text" id="serv_img2" oninput="previewImg('serv_img2', 'prev_serv2')">
-                        </div>
-                        <img id="prev_serv2" class="image-preview" src="">
-                    </div>
-                </div>
-            </div>
-
-            <!-- PROJETOS RECENTES -->
-            <div id="projetos" class="section-panel">
-                <h3>Seção Projetos Recentes</h3>
-
-                <div class="form-group">
-                    <label>Título da Seção</label>
-                    <input type="text" id="proj_tit" placeholder="Ex: PROJETOS RECENTES">
-                </div>
-
-                <div class="sub-block">
-                    <h4>Projeto 1</h4>
-                    <div class="form-group">
-                        <label>Nome do Projeto (Acessibilidade)</label>
-                        <input type="text" id="proj1_nome" placeholder="Residencial Vila Nova">
-                        <label style="margin-top:10px;">Upload / URL</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'proj1_img')">
-                            <input type="text" id="proj1_img" oninput="previewImg('proj1_img', 'prev_proj1')">
-                        </div>
-                        <img id="prev_proj1" class="image-preview" src="">
-                    </div>
-                </div>
-
-                <div class="sub-block">
-                    <h4>Projeto 2</h4>
-                    <div class="form-group">
-                        <label>Nome do Projeto (Acessibilidade)</label>
-                        <input type="text" id="proj2_nome" placeholder="Centro Empresarial">
-                        <label style="margin-top:10px;">Upload / URL</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'proj2_img')">
-                            <input type="text" id="proj2_img" oninput="previewImg('proj2_img', 'prev_proj2')">
-                        </div>
-                        <img id="prev_proj2" class="image-preview" src="">
-                    </div>
-                </div>
-
-                <div class="sub-block">
-                    <h4>Projeto 3</h4>
-                    <div class="form-group">
-                        <label>Nome do Projeto (Acessibilidade)</label>
-                        <input type="text" id="proj3_nome" placeholder="Muro de Arrimo">
-                        <label style="margin-top:10px;">Upload / URL</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'proj3_img')">
-                            <input type="text" id="proj3_img" oninput="previewImg('proj3_img', 'prev_proj3')">
-                        </div>
-                        <img id="prev_proj3" class="image-preview" src="">
-                    </div>
-                </div>
-
-                <div class="sub-block">
-                    <h4>Projeto 4</h4>
-                    <div class="form-group">
-                        <label>Nome do Projeto (Acessibilidade)</label>
-                        <input type="text" id="proj4_nome" placeholder="Projeto Comercial">
-                        <label style="margin-top:10px;">Upload / URL</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'proj4_img')">
-                            <input type="text" id="proj4_img" oninput="previewImg('proj4_img', 'prev_proj4')">
-                        </div>
-                        <img id="prev_proj4" class="image-preview" src="">
-                    </div>
-                </div>
-            </div>
-
-            <!-- PORTFÓLIO -->
-            <div id="portfolio" class="section-panel">
-                <h3>Menu Portfólio (Fotos)</h3>
-                <p>Aqui você adiciona as fotos que aparecerão na guia de Portfólio, no site as fotos ganham as
-                    categorias de: Residencial, Comercial, Industrial, Reforma, Acabamento e também o filtro de "Todos".
-                    Você pode adicionar quantas quiser, o layout da grade se adapta automaticamente.</p>
-
-                <div class="header-bar"
-                    style="position:static; padding:15px; margin-bottom:20px; box-shadow:none; border: 1px solid #ddd;">
-                    <h4 style="margin:0;">Projetos Cadastrados</h4>
-                    <button type="button" class="btn-save" onclick="addPortItem()"><i class="fas fa-plus"></i> Adicionar
-                        Projeto</button>
-                </div>
-
-                <div id="portfolio-container">
-                    <!-- Gerado dinamicamente -->
-                </div>
-            </div>
-
-            <!-- SOBRE -->
-            <div id="sobre" class="section-panel">
-                <h3>Seção Sobre Nós</h3>
-                <div class="form-group">
-                    <label>Título</label>
-                    <input type="text" id="sobre_tit" placeholder="Sobre Nós">
-                </div>
-                <div class="form-group">
-                    <label>Texto Completo (Habilita HTML)</label>
-                    <textarea id="sobre_txt"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Upload da Imagem Sobre Nós</label>
-                    <div class="upload-row">
-                        <input type="file" accept="image/*" onchange="handleUpload(this, 'sobre_img')">
-                        <input type="text" id="sobre_img" oninput="previewImg('sobre_img', 'prev_sobre')">
-                    </div>
-                    <img id="prev_sobre" class="image-preview" src="">
-                </div>
-            </div>
-
-            <!-- CONTATO -->
-            <div id="contato" class="section-panel">
-                <h3>Informações de Contato</h3>
-                <div class="form-group">
-                    <label>Endereço</label>
-                    <input type="text" id="contato_end" placeholder="Lisboa — Portugal">
-                </div>
-                <div class="form-group">
-                    <label>Telefone</label>
-                    <input type="text" id="contato_tel" placeholder="+351 934 627 192">
-                </div>
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="text" id="contato_email" placeholder="contato@mcpconstrucoes.pt">
-                </div>
-                <div class="form-group">
-                    <label>Horário</label>
-                    <input type="text" id="contato_hr" placeholder="Seg–Sex: 08h às 18h">
-                </div>
-                <div class="sub-block">
-                    <h4>Informações Extra do Rodapé (Footer)</h4>
-                    <div class="form-group">
-                        <label>Pequeno texto de descrição no rodapé</label>
-                        <input type="text" id="footer_desc" placeholder="Ex: Mais de 15 anos entregando obras...">
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA BANNER -->
-            <div id="cta" class="section-panel">
-                <h3>Banner Chamada para Ação (Final da Página)</h3>
-                <div class="form-group">
-                    <label>Título do Banner</label>
-                    <input type="text" id="cta_tit" placeholder="Ex: NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.">
-                </div>
-                <div class="form-group">
-                    <label>Subtítulo do Banner</label>
-                    <input type="text" id="cta_sub"
-                        placeholder="Ex: Estamos sempre empenhados em ajudar nossos clientes.">
-                </div>
-                <div class="form-group">
-                    <label>Imagem de Fundo (Background)</label>
-                    <div class="upload-row">
-                        <input type="file" accept="image/*" onchange="handleUpload(this, 'cta_img')">
-                        <input type="text" id="cta_img" oninput="previewImg('cta_img', 'prev_cta')">
-                    </div>
-                    <img id="prev_cta" class="image-preview" src="">
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <div class="notification" id="notif">Alterações salvas com sucesso!</div>
+        <div class="notification" id="notif">Alterações salvas com sucesso!</div>
 
-    <script>
-        const LOGIN_CORRETO = "vitoriaservicosdepintura@gmail.com";
-        const SENHA_CORRETA = "10203040";
+        <script>
+            const LOGIN_CORRETO = "vitoriaservicosdepintura@gmail.com";
+            const SENHA_CORRETA = "10203040";
 
-        let portfolioItems = [];
+            let portfolioItems = [];
 
-        function renderPortfolio() {
-            const container = document.getElementById('portfolio-container');
-            container.innerHTML = '';
-            portfolioItems.forEach((item, index) => {
-                container.innerHTML += `
+            function renderPortfolio() {
+                const container = document.getElementById('portfolio-container');
+                container.innerHTML = '';
+                portfolioItems.forEach((item, index) => {
+                    container.innerHTML += `
                     <div class="sub-block portfolio-item-block">
                         <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; margin-bottom:15px; padding-bottom:10px;">
                             <h4 style="margin:0; border:none; padding:0;">Projeto ${index + 1}</h4>
@@ -687,263 +715,272 @@
                         </div>
                     </div>
                 `;
-            });
-        }
+                });
+            }
 
-        function addPortItem() {
-            portfolioItems.push({ img: '', nome: '', categoria: 'RESIDENCIAL' });
-            renderPortfolio();
-        }
-
-        function removePortItem(index) {
-            if (confirm('Tem certeza que deseja remover este projeto?')) {
-                portfolioItems.splice(index, 1);
+            function addPortItem() {
+                portfolioItems.push({ img: '', nome: '', categoria: 'RESIDENCIAL' });
                 renderPortfolio();
             }
-        }
 
-        function updatePortField(index, field, value) {
-            portfolioItems[index][field] = value;
-        }
-
-        function handleDynUpload(input, index) {
-            const file = input.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const img = new Image();
-                img.onload = function () {
-                    const canvas = document.createElement('canvas');
-                    let width = img.width, height = img.height;
-                    const max_size = 800;
-                    if (width > height) {
-                        if (width > max_size) { height *= max_size / width; width = max_size; }
-                    } else {
-                        if (height > max_size) { width *= max_size / height; height = max_size; }
-                    }
-                    canvas.width = width; canvas.height = height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
-
-                    updatePortField(index, 'img', dataUrl);
-                    renderPortfolio(); // re-render block to show img
+            function removePortItem(index) {
+                if (confirm('Tem certeza que deseja remover este projeto?')) {
+                    portfolioItems.splice(index, 1);
+                    renderPortfolio();
                 }
-                img.src = e.target.result;
             }
-            reader.readAsDataURL(file);
-        }
 
-        if (localStorage.getItem('mcp_admin_logged') === 'true') {
-            mostrarApp();
-        }
+            function updatePortField(index, field, value) {
+                portfolioItems[index][field] = value;
+            }
 
-        function realizarLogin() {
-            const email = document.getElementById('login-email').value.toLowerCase();
-            const pass = document.getElementById('login-pass').value;
+            function handleDynUpload(input, index) {
+                const file = input.files[0];
+                if (!file) return;
 
-            if (email === LOGIN_CORRETO && pass === SENHA_CORRETA) {
-                localStorage.setItem('mcp_admin_logged', 'true');
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = new Image();
+                    img.onload = function () {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width, height = img.height;
+                        const max_size = 800;
+                        if (width > height) {
+                            if (width > max_size) { height *= max_size / width; width = max_size; }
+                        } else {
+                            if (height > max_size) { width *= max_size / height; height = max_size; }
+                        }
+                        canvas.width = width; canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+
+                        updatePortField(index, 'img', dataUrl);
+                        renderPortfolio(); // re-render block to show img
+                    }
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+
+            if (localStorage.getItem('mcp_admin_logged') === 'true') {
                 mostrarApp();
-            } else {
-                document.getElementById('login-error').style.display = 'block';
             }
-        }
 
-        function realizarLogout() {
-            localStorage.removeItem('mcp_admin_logged');
-            document.getElementById('admin-panel').classList.add('hidden');
-            document.getElementById('login-screen').classList.remove('hidden');
-        }
+            function realizarLogin() {
+                const email = document.getElementById('login-email').value.toLowerCase();
+                const pass = document.getElementById('login-pass').value;
 
-        function mostrarApp() {
-            document.getElementById('login-screen').classList.add('hidden');
-            document.getElementById('admin-panel').classList.remove('hidden');
-            carregarDados();
-        }
+                if (email === LOGIN_CORRETO && pass === SENHA_CORRETA) {
+                    localStorage.setItem('mcp_admin_logged', 'true');
+                    mostrarApp();
+                } else {
+                    document.getElementById('login-error').style.display = 'block';
+                }
+            }
 
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+            function realizarLogout() {
+                localStorage.removeItem('mcp_admin_logged');
+                document.getElementById('admin-panel').classList.add('hidden');
+                document.getElementById('login-screen').classList.remove('hidden');
+            }
 
-                link.classList.add('active');
-                const target = link.getAttribute('data-target');
-                document.getElementById(target).classList.add('active');
-                document.getElementById('current-section-title').innerText = link.innerText;
+            function mostrarApp() {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('admin-panel').classList.remove('hidden');
+                carregarDados();
+            }
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+
+                    link.classList.add('active');
+                    const target = link.getAttribute('data-target');
+                    document.getElementById(target).classList.add('active');
+                    document.getElementById('current-section-title').innerText = link.innerText;
+                });
             });
-        });
 
-        // Converte Imagem em Base64 para aceitar Upload na LocalStorage
-        function handleUpload(input, targetId) {
-            const file = input.files[0];
-            if (!file) return;
+            // Converte Imagem em Base64 para aceitar Upload na LocalStorage
+            function handleUpload(input, targetId) {
+                const file = input.files[0];
+                if (!file) return;
 
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                // Resize com canvas pra não estourar os 5MB do LocalStorage
-                const img = new Image();
-                img.onload = function () {
-                    const canvas = document.createElement('canvas');
-                    let width = img.width;
-                    let height = img.height;
-                    const max_size = 800;
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    // Resize com canvas pra não estourar os 5MB do LocalStorage
+                    const img = new Image();
+                    img.onload = function () {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        const max_size = 800;
 
-                    if (width > height) {
-                        if (width > max_size) {
-                            height *= max_size / width;
-                            width = max_size;
+                        if (width > height) {
+                            if (width > max_size) {
+                                height *= max_size / width;
+                                width = max_size;
+                            }
+                        } else {
+                            if (height > max_size) {
+                                width *= max_size / height;
+                                height = max_size;
+                            }
                         }
-                    } else {
-                        if (height > max_size) {
-                            width *= max_size / height;
-                            height = max_size;
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.6); // Compressão
+                        document.getElementById(targetId).value = dataUrl;
+                        previewImg(targetId, targetId.replace('img', 'prev').replace(/port_img/g, 'prev_port').replace(/slide(\d)_img/, 'prev_slide$1').replace('serv_img', 'prev_serv')); // Atualiza preview chamando ID correto manualmente
+                    }
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+
+            const defaultConfig = {
+                logo_img: "LOGO-1.png",
+                logo_size: "55",
+                logo_texto_1: "MCP",
+                logo_texto_2: "Construções",
+                logo_sub: "Engenharia e Obras",
+
+                slide1_tit1: "Construção Civil",
+                slide1_tit2: "de Alto Padrão",
+                slide1_sub: "Mais de 15 anos construindo o futuro com excelência.",
+                slide1_img: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1600&q=80",
+
+                slide2_tit1: "Obras Residenciais",
+                slide2_tit2: "e Comerciais",
+                slide2_img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80",
+
+                slide3_tit1: "Reformas e",
+                slide3_tit2: "Ampliações",
+                slide3_img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80",
+
+                slide4_tit1: "Galpões e",
+                slide4_tit2: "Construção Industrial",
+                slide4_img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
+
+                stats_text: "NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.",
+
+                serv_tit1: "Construção Residencial",
+                serv_txt1: "<p style='margin-bottom: 15px;'>A MCP Construções é especializada em obras residenciais de alto padrão...</p>",
+                serv_img1: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=80",
+
+                serv_tit2: "Obras Comerciais e Industriais",
+                serv_txt2: "<p style='margin-bottom: 15px;'>Galpões, lojas, escritórios e estruturas industriais prontos para o seu negócio.</p>",
+                serv_img2: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80",
+
+                sobre_tit: "Sobre Nós",
+                sobre_txt: "<p>A MCP Construções nasceu da paixão por transformar projetos em realidade...</p>",
+                sobre_img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&q=80",
+
+                cta_tit: "NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.",
+                cta_sub: "Estamos sempre empenhados em ajudar nossos clientes em cada projeto.",
+                cta_img: "wp-content/themes/nobislux/images/bg-01.jpg",
+
+                contato_end: "Lisboa — Portugal",
+                contato_tel: "+351 934 627 192",
+                contato_email: "contato@mcpconstrucoes.pt",
+                contato_hr: "Seg–Sex: 08h às 18h",
+                footer_desc: "Mais de 15 anos entregando obras com qualidade, prazo e compromisso.",
+
+                // portfolio não fará mais parte das variáveis normais, migrado pro dynamic array
+            };
+
+            const defaultPortfolio = [
+                { img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", nome: "Residencial Vila Nova", categoria: "RESIDENCIAL" },
+                { img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", nome: "Centro Empresarial Horizonte", categoria: "COMERCIAL" },
+                { img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", nome: "Galpão Logístico LP-12", categoria: "INDUSTRIAL" },
+                { img: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80", nome: "Casa Alto Padrão SP", categoria: "RESIDENCIAL, REFORMA" },
+                { img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=600&q=80", nome: "Escritório Corporativo Premium", categoria: "COMERCIAL, ACABAMENTO" },
+                { img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80", nome: "Reforma Completa Campinas", categoria: "REFORMA, ACABAMENTO" },
+                { img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80", nome: "Condomínio Residencial Guarulhos", categoria: "RESIDENCIAL" },
+                { img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", nome: "Complexo Industrial ABC", categoria: "INDUSTRIAL" },
+                { img: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&q=80", nome: "Acabamento Residencial", categoria: "ACABAMENTO" },
+                { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80", nome: "Loja Shopping Center", categoria: "COMERCIAL" },
+                { img: "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=600&q=80", nome: "Reforma Comercial SP", categoria: "REFORMA" },
+                { img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80", nome: "Apartamento Alto Padrão", categoria: "RESIDENCIAL, ACABAMENTO" }
+            ];
+
+            function carregarDados() {
+                try {
+                    let savedData = JSON.parse(localStorage.getItem('mcp_site_data'));
+                    if (!savedData || typeof savedData !== 'object') savedData = defaultConfig;
+
+                    for (const key in defaultConfig) {
+                        const el = document.getElementById(key);
+                        if (el) {
+                            el.value = savedData[key] !== undefined ? savedData[key] : defaultConfig[key];
+                            // Ativa preview com regex ajustada pra cada tipo
+                            if (key.includes('_img')) {
+                                let prevId = '';
+                                if (key === 'logo_img') prevId = 'prev_logo';
+                                else if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
+                                else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
+                                else if (key.includes('sobre_img')) prevId = 'prev_sobre';
+                                else if (key.includes('cta_img')) prevId = 'prev_cta';
+
+                                if (prevId) previewImg(key, prevId);
+                            }
+
+                            // Atualiza label do range do logo_size
+                            if (key === 'logo_size') {
+                                const valEl = document.getElementById('logo_size_val');
+                                if (valEl) valEl.innerText = savedData[key] + 'px';
+                            }
                         }
                     }
-                    canvas.width = width;
-                    canvas.height = height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
 
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.6); // Compressão
-                    document.getElementById(targetId).value = dataUrl;
-                    previewImg(targetId, targetId.replace('img', 'prev').replace(/port_img/g, 'prev_port').replace(/slide(\d)_img/, 'prev_slide$1').replace('serv_img', 'prev_serv')); // Atualiza preview chamando ID correto manualmente
+                    // Load Portfolio Array
+                    let savedPort = JSON.parse(localStorage.getItem('mcp_site_portfolio'));
+                    if (!savedPort || !Array.isArray(savedPort) || savedPort.length <= 4) savedPort = defaultPortfolio;
+                    portfolioItems = savedPort;
+                    renderPortfolio();
+
+                } catch (e) {
+                    console.error(e);
                 }
-                img.src = e.target.result;
             }
-            reader.readAsDataURL(file);
-        }
 
-        const defaultConfig = {
-            logo_texto_1: "MCP",
-            logo_texto_2: "Construções",
-            logo_sub: "Engenharia e Obras",
-
-            slide1_tit1: "Construção Civil",
-            slide1_tit2: "de Alto Padrão",
-            slide1_sub: "Mais de 15 anos construindo o futuro com excelência.",
-            slide1_img: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1600&q=80",
-
-            slide2_tit1: "Obras Residenciais",
-            slide2_tit2: "e Comerciais",
-            slide2_img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80",
-
-            slide3_tit1: "Reformas e",
-            slide3_tit2: "Ampliações",
-            slide3_img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80",
-
-            slide4_tit1: "Galpões e",
-            slide4_tit2: "Construção Industrial",
-            slide4_img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80",
-
-            stats_text: "NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.",
-
-            serv_tit1: "Construção Residencial",
-            serv_txt1: "<p style='margin-bottom: 15px;'>A MCP Construções é especializada em obras residenciais de alto padrão...</p>",
-            serv_img1: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=80",
-
-            serv_tit2: "Obras Comerciais e Industriais",
-            serv_txt2: "<p style='margin-bottom: 15px;'>Galpões, lojas, escritórios e estruturas industriais prontos para o seu negócio.</p>",
-            serv_img2: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80",
-
-            sobre_tit: "Sobre Nós",
-            sobre_txt: "<p>A MCP Construções nasceu da paixão por transformar projetos em realidade...</p>",
-            sobre_img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&q=80",
-
-            cta_tit: "NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.",
-            cta_sub: "Estamos sempre empenhados em ajudar nossos clientes em cada projeto.",
-            cta_img: "wp-content/themes/nobislux/images/bg-01.jpg",
-
-            contato_end: "Lisboa — Portugal",
-            contato_tel: "+351 934 627 192",
-            contato_email: "contato@mcpconstrucoes.pt",
-            contato_hr: "Seg–Sex: 08h às 18h",
-            footer_desc: "Mais de 15 anos entregando obras com qualidade, prazo e compromisso.",
-
-            // portfolio não fará mais parte das variáveis normais, migrado pro dynamic array
-        };
-
-        const defaultPortfolio = [
-            { img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", nome: "Residencial Vila Nova", categoria: "RESIDENCIAL" },
-            { img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", nome: "Centro Empresarial Horizonte", categoria: "COMERCIAL" },
-            { img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", nome: "Galpão Logístico LP-12", categoria: "INDUSTRIAL" },
-            { img: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80", nome: "Casa Alto Padrão SP", categoria: "RESIDENCIAL, REFORMA" },
-            { img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=600&q=80", nome: "Escritório Corporativo Premium", categoria: "COMERCIAL, ACABAMENTO" },
-            { img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80", nome: "Reforma Completa Campinas", categoria: "REFORMA, ACABAMENTO" },
-            { img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80", nome: "Condomínio Residencial Guarulhos", categoria: "RESIDENCIAL" },
-            { img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", nome: "Complexo Industrial ABC", categoria: "INDUSTRIAL" },
-            { img: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&q=80", nome: "Acabamento Residencial", categoria: "ACABAMENTO" },
-            { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80", nome: "Loja Shopping Center", categoria: "COMERCIAL" },
-            { img: "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=600&q=80", nome: "Reforma Comercial SP", categoria: "REFORMA" },
-            { img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80", nome: "Apartamento Alto Padrão", categoria: "RESIDENCIAL, ACABAMENTO" }
-        ];
-
-        function carregarDados() {
-            try {
-                let savedData = JSON.parse(localStorage.getItem('mcp_site_data'));
-                if (!savedData || typeof savedData !== 'object') savedData = defaultConfig;
+            function salvarAlteracoes() {
+                const savedData = JSON.parse(localStorage.getItem('mcp_site_data')) || defaultConfig;
 
                 for (const key in defaultConfig) {
                     const el = document.getElementById(key);
                     if (el) {
-                        el.value = savedData[key] !== undefined ? savedData[key] : defaultConfig[key];
-                        // Ativa preview com regex ajustada pra cada tipo
-                        if (key.includes('_img')) {
-                            let prevId = '';
-                            if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
-                            else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
-                            else if (key.includes('sobre_img')) prevId = 'prev_sobre';
-                            else if (key.includes('cta_img')) prevId = 'prev_cta';
-
-                            if (prevId) previewImg(key, prevId);
-                        }
+                        savedData[key] = el.value;
                     }
                 }
 
-                // Load Portfolio Array
-                let savedPort = JSON.parse(localStorage.getItem('mcp_site_portfolio'));
-                if (!savedPort || !Array.isArray(savedPort) || savedPort.length <= 4) savedPort = defaultPortfolio;
-                portfolioItems = savedPort;
-                renderPortfolio();
-
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        function salvarAlteracoes() {
-            const savedData = JSON.parse(localStorage.getItem('mcp_site_data')) || defaultConfig;
-
-            for (const key in defaultConfig) {
-                const el = document.getElementById(key);
-                if (el) {
-                    savedData[key] = el.value;
+                try {
+                    localStorage.setItem('mcp_site_data', JSON.stringify(savedData));
+                    localStorage.setItem('mcp_site_portfolio', JSON.stringify(portfolioItems));
+                    const notif = document.getElementById('notif');
+                    notif.classList.add('show');
+                    notif.innerText = "Alterações salvas com sucesso!";
+                    setTimeout(() => notif.classList.remove('show'), 3000);
+                } catch (e) {
+                    alert("Erro ao salvar! A imagem enviada pode ser muito grande. Tente arquivos mais leves.");
                 }
             }
 
-            try {
-                localStorage.setItem('mcp_site_data', JSON.stringify(savedData));
-                localStorage.setItem('mcp_site_portfolio', JSON.stringify(portfolioItems));
-                const notif = document.getElementById('notif');
-                notif.classList.add('show');
-                notif.innerText = "Alterações salvas com sucesso!";
-                setTimeout(() => notif.classList.remove('show'), 3000);
-            } catch (e) {
-                alert("Erro ao salvar! A imagem enviada pode ser muito grande. Tente arquivos mais leves.");
+            function previewImg(inputId, imgId) {
+                const inputEl = document.getElementById(inputId);
+                const imgEl = document.getElementById(imgId);
+                if (imgEl && inputEl) {
+                    imgEl.src = inputEl.value;
+                    imgEl.style.display = inputEl.value ? 'block' : 'none';
+                }
             }
-        }
-
-        function previewImg(inputId, imgId) {
-            const inputEl = document.getElementById(inputId);
-            const imgEl = document.getElementById(imgId);
-            if (imgEl && inputEl) {
-                imgEl.src = inputEl.value;
-                imgEl.style.display = inputEl.value ? 'block' : 'none';
-            }
-        }
-    </script>
+        </script>
 </body>
 
 </html>
