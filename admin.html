@@ -320,6 +320,8 @@
                 <li><a href="#" class="nav-link" data-target="inicio"><i class="fas fa-home"></i> Início (Banner)</a>
                 </li>
                 <li><a href="#" class="nav-link" data-target="servicos"><i class="fas fa-hammer"></i> Serviços</a></li>
+                <li><a href="#" class="nav-link" data-target="projetos"><i class="fas fa-camera"></i> Projetos
+                        Recentes</a></li>
                 <li><a href="#" class="nav-link" data-target="portfolio"><i class="fas fa-images"></i> Portfólio</a>
                 </li>
                 <li><a href="#" class="nav-link" data-target="sobre"><i class="fas fa-info-circle"></i> Sobre Nós</a>
@@ -487,6 +489,72 @@
                             <input type="text" id="serv_img2" oninput="previewImg('serv_img2', 'prev_serv2')">
                         </div>
                         <img id="prev_serv2" class="image-preview" src="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJETOS RECENTES -->
+            <div id="projetos" class="section-panel">
+                <h3>Seção Projetos Recentes</h3>
+
+                <div class="form-group">
+                    <label>Título da Seção</label>
+                    <input type="text" id="proj_tit" placeholder="Ex: PROJETOS RECENTES">
+                </div>
+
+                <div class="sub-block">
+                    <h4>Projeto 1</h4>
+                    <div class="form-group">
+                        <label>Nome do Projeto (Acessibilidade)</label>
+                        <input type="text" id="proj1_nome" placeholder="Residencial Vila Nova">
+                        <label style="margin-top:10px;">Upload / URL</label>
+                        <div class="upload-row">
+                            <input type="file" accept="image/*" onchange="handleUpload(this, 'proj1_img')">
+                            <input type="text" id="proj1_img" oninput="previewImg('proj1_img', 'prev_proj1')">
+                        </div>
+                        <img id="prev_proj1" class="image-preview" src="">
+                    </div>
+                </div>
+
+                <div class="sub-block">
+                    <h4>Projeto 2</h4>
+                    <div class="form-group">
+                        <label>Nome do Projeto (Acessibilidade)</label>
+                        <input type="text" id="proj2_nome" placeholder="Centro Empresarial">
+                        <label style="margin-top:10px;">Upload / URL</label>
+                        <div class="upload-row">
+                            <input type="file" accept="image/*" onchange="handleUpload(this, 'proj2_img')">
+                            <input type="text" id="proj2_img" oninput="previewImg('proj2_img', 'prev_proj2')">
+                        </div>
+                        <img id="prev_proj2" class="image-preview" src="">
+                    </div>
+                </div>
+
+                <div class="sub-block">
+                    <h4>Projeto 3</h4>
+                    <div class="form-group">
+                        <label>Nome do Projeto (Acessibilidade)</label>
+                        <input type="text" id="proj3_nome" placeholder="Muro de Arrimo">
+                        <label style="margin-top:10px;">Upload / URL</label>
+                        <div class="upload-row">
+                            <input type="file" accept="image/*" onchange="handleUpload(this, 'proj3_img')">
+                            <input type="text" id="proj3_img" oninput="previewImg('proj3_img', 'prev_proj3')">
+                        </div>
+                        <img id="prev_proj3" class="image-preview" src="">
+                    </div>
+                </div>
+
+                <div class="sub-block">
+                    <h4>Projeto 4</h4>
+                    <div class="form-group">
+                        <label>Nome do Projeto (Acessibilidade)</label>
+                        <input type="text" id="proj4_nome" placeholder="Projeto Comercial">
+                        <label style="margin-top:10px;">Upload / URL</label>
+                        <div class="upload-row">
+                            <input type="file" accept="image/*" onchange="handleUpload(this, 'proj4_img')">
+                            <input type="text" id="proj4_img" oninput="previewImg('proj4_img', 'prev_proj4')">
+                        </div>
+                        <img id="prev_proj4" class="image-preview" src="">
                     </div>
                 </div>
             </div>
@@ -711,7 +779,7 @@
 
                     const dataUrl = canvas.toDataURL('image/jpeg', 0.6); // Compressão
                     document.getElementById(targetId).value = dataUrl;
-                    previewImg(targetId, targetId.replace('img', 'prev').replace(/port_img/g, 'prev_port').replace(/slide(\d)_img/, 'prev_slide$1').replace('serv_img', 'prev_serv')); // Atualiza preview chamando ID correto manualmente
+                    previewImg(targetId, targetId.replace('img', 'prev').replace(/port_img/g, 'prev_port').replace(/slide(\d)_img/, 'prev_slide$1').replace(/proj(\d)_img/, 'prev_proj$1').replace('serv_img', 'prev_serv')); // Atualiza preview chamando ID correto manualmente
                 }
                 img.src = e.target.result;
             }
@@ -749,6 +817,16 @@
             serv_tit2: "Obras Comerciais e Industriais",
             serv_txt2: "<p style='margin-bottom: 15px;'>Galpões, lojas, escritórios e estruturas industriais prontos para o seu negócio.</p>",
             serv_img2: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80",
+
+            proj_tit: "PROJETOS RECENTES",
+            proj1_nome: "Residencial Vila Nova",
+            proj1_img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80",
+            proj2_nome: "Centro Empresarial Horizonte",
+            proj2_img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80",
+            proj3_nome: "Galpão Logístico LP-12",
+            proj3_img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80",
+            proj4_nome: "Reforma Residencial Completa",
+            proj4_img: "https://images.unsplash.com/photo-1545670723-196ed0954986?w=1600&q=80",
 
             sobre_tit: "Sobre Nós",
             sobre_txt: "<p>A MCP Construções nasceu da paixão por transformar projetos em realidade...</p>",
@@ -791,6 +869,7 @@
                             let prevId = '';
                             if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
                             else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
+                            else if (key.includes('proj') && key.includes('_img')) prevId = key.replace('_img', '').replace('proj', 'prev_proj');
                             else if (key.includes('sobre_img')) prevId = 'prev_sobre';
 
                             previewImg(key, prevId);
