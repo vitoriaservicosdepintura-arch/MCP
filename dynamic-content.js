@@ -56,8 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
         port_img12: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80", port_nome12: "Apto Alto Padrão", port_cat12: "RESIDENCIAL, ACABAMENTO"
     };
 
-    let savedData = JSON.parse(localStorage.getItem('mcp_site_data'));
-    if (!savedData) savedData = defaultData; // se n tiver salvo
+    let savedData = null;
+    try {
+        let temp = JSON.parse(localStorage.getItem('mcp_site_data'));
+        if (temp && typeof temp === 'object') savedData = temp;
+    } catch (e) {
+        console.error("Erro ao ler LocalStorage", e);
+    }
+    if (!savedData) savedData = defaultData; // se n tiver salvo ou der erro
 
     const md = { ...defaultData, ...savedData };
 

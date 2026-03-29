@@ -83,9 +83,7 @@
 
         /* --- ADMIN PANEL --- */
         #admin-panel {
-            display: none;
             display: flex;
-            /* handled in JS */
             min-height: 100vh;
         }
 
@@ -717,23 +715,28 @@
         };
 
         function carregarDados() {
-            const savedData = JSON.parse(localStorage.getItem('mcp_site_data')) || defaultConfig;
+            try {
+                let savedData = JSON.parse(localStorage.getItem('mcp_site_data'));
+                if (!savedData || typeof savedData !== 'object') savedData = defaultConfig;
 
-            for (const key in defaultConfig) {
-                const el = document.getElementById(key);
-                if (el) {
-                    el.value = savedData[key] !== undefined ? savedData[key] : defaultConfig[key];
-                    // Ativa preview com regex ajustada pra cada tipo
-                    if (key.includes('_img')) {
-                        let prevId = '';
-                        if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
-                        else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
-                        else if (key.includes('sobre_img')) prevId = 'prev_sobre';
-                        else if (key.includes('port_img')) prevId = key.replace('port_img', 'prev_port');
+                for (const key in defaultConfig) {
+                    const el = document.getElementById(key);
+                    if (el) {
+                        el.value = savedData[key] !== undefined ? savedData[key] : defaultConfig[key];
+                        // Ativa preview com regex ajustada pra cada tipo
+                        if (key.includes('_img')) {
+                            let prevId = '';
+                            if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
+                            else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
+                            else if (key.includes('sobre_img')) prevId = 'prev_sobre';
+                            else if (key.includes('port_img')) prevId = key.replace('port_img', 'prev_port');
 
-                        previewImg(key, prevId);
+                            previewImg(key, prevId);
+                        }
                     }
                 }
+            } catch (e) {
+                console.error(e);
             }
         }
 
