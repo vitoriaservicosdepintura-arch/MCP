@@ -36,10 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
         sobre_txt: "<p>A MCP Construções nasceu da paixão por transformar projetos em realidade...</p>",
         sobre_img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&q=80",
 
+        cta_tit: "NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.",
+        cta_sub: "Estamos sempre empenhados em ajudar nossos clientes em cada projeto.",
+        cta_img: "wp-content/themes/nobislux/images/bg-01.jpg",
+
         contato_end: "Lisboa — Portugal",
         contato_tel: "+351 934 627 192",
         contato_email: "contato@mcpconstrucoes.pt",
         contato_hr: "Seg–Sex: 08h às 18h",
+        footer_desc: "Mais de 15 anos entregando obras com qualidade, prazo e compromisso.",
 
         // Não tem mais portfolio via objeto, tudo via Array dinâmico mcp_site_portfolio
     };
@@ -186,5 +191,22 @@ document.addEventListener("DOMContentLoaded", function () {
             mailEl.href = `mailto:${md.contato_email}`;
         }
         setHtml('.c-info-item:nth-child(4) p', md.contato_hr);
+    }
+
+    // Atualiza links e textos do rodapé (Footer)
+    setHtml('footer .col:nth-child(1) p', md.footer_desc);
+    const footTel = document.querySelector('footer .col:nth-child(3) p:nth-of-type(1) a');
+    if (footTel) { footTel.innerText = md.contato_tel; footTel.href = `tel:${md.contato_tel.replace(/\D/g, '')}`; }
+    const footMail = document.querySelector('footer .col:nth-child(3) p:nth-of-type(2) a');
+    if (footMail) { footMail.innerText = md.contato_email; footMail.href = `mailto:${md.contato_email}`; }
+    setHtml('footer .col:nth-child(3) p:nth-of-type(3)', md.contato_hr);
+    setHtml('footer .col:nth-child(2)', `<h4>LOCALIZAÇÃO</h4>${md.contato_end.replace(' — ', '<br>')}`);
+
+    /* ==== CTA BANNER (SECTION 6) ==== */
+    const ctaSec = document.querySelector('#section-6');
+    if (ctaSec) {
+        setHtml('#section-6 h2', md.cta_tit);
+        setHtml('#section-6 p', md.cta_sub);
+        if (md.cta_img) ctaSec.style.backgroundImage = `url('${md.cta_img}')`;
     }
 });

@@ -324,7 +324,10 @@
                 </li>
                 <li><a href="#" class="nav-link" data-target="sobre"><i class="fas fa-info-circle"></i> Sobre Nós</a>
                 </li>
-                <li><a href="#" class="nav-link" data-target="contato"><i class="fas fa-envelope"></i> Contato</a></li>
+                <li><a href="#" class="nav-link" data-target="cta"><i class="fas fa-bullhorn"></i> Banner CTA</a>
+                </li>
+                <li><a href="#" class="nav-link" data-target="contatos"><i class="fas fa-address-book"></i> Contatos</a>
+                </li>
             </ul>
             <a href="#" class="logout-btn" onclick="realizarLogout()"><i class="fas fa-sign-out-alt"></i> Sair</a>
         </div>
@@ -616,6 +619,35 @@
                     <label>Horário</label>
                     <input type="text" id="contato_hr" placeholder="Seg–Sex: 08h às 18h">
                 </div>
+                <div class="sub-block">
+                    <h4>Informações Extra do Rodapé (Footer)</h4>
+                    <div class="form-group">
+                        <label>Pequeno texto de descrição no rodapé</label>
+                        <input type="text" id="footer_desc" placeholder="Ex: Mais de 15 anos entregando obras...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA BANNER -->
+            <div id="cta" class="section-panel">
+                <h3>Banner Chamada para Ação (Final da Página)</h3>
+                <div class="form-group">
+                    <label>Título do Banner</label>
+                    <input type="text" id="cta_tit" placeholder="Ex: NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.">
+                </div>
+                <div class="form-group">
+                    <label>Subtítulo do Banner</label>
+                    <input type="text" id="cta_sub"
+                        placeholder="Ex: Estamos sempre empenhados em ajudar nossos clientes.">
+                </div>
+                <div class="form-group">
+                    <label>Imagem de Fundo (Background)</label>
+                    <div class="upload-row">
+                        <input type="file" accept="image/*" onchange="handleUpload(this, 'cta_img')">
+                        <input type="text" id="cta_img" oninput="previewImg('cta_img', 'prev_cta')">
+                    </div>
+                    <img id="prev_cta" class="image-preview" src="">
+                </div>
             </div>
 
         </div>
@@ -820,10 +852,15 @@
             sobre_txt: "<p>A MCP Construções nasceu da paixão por transformar projetos em realidade...</p>",
             sobre_img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&q=80",
 
+            cta_tit: "NA MCP CONSTRUÇÕES, CADA DETALHE É IMPORTANTE.",
+            cta_sub: "Estamos sempre empenhados em ajudar nossos clientes em cada projeto.",
+            cta_img: "wp-content/themes/nobislux/images/bg-01.jpg",
+
             contato_end: "Lisboa — Portugal",
             contato_tel: "+351 934 627 192",
             contato_email: "contato@mcpconstrucoes.pt",
             contato_hr: "Seg–Sex: 08h às 18h",
+            footer_desc: "Mais de 15 anos entregando obras com qualidade, prazo e compromisso.",
 
             // portfolio não fará mais parte das variáveis normais, migrado pro dynamic array
         };
@@ -858,6 +895,7 @@
                             if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
                             else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
                             else if (key.includes('sobre_img')) prevId = 'prev_sobre';
+                            else if (key.includes('cta_img')) prevId = 'prev_cta';
 
                             if (prevId) previewImg(key, prevId);
                         }
