@@ -345,17 +345,37 @@
             <!-- GERAL / LOGO -->
             <div id="geral" class="section-panel active">
                 <h3>Configurações Gerais</h3>
-                <div class="form-group">
-                    <label>Logo Texto Principal</label>
-                    <input type="text" id="logo_texto_1" placeholder="Ex: MCP">
+
+                <div class="sub-block">
+                    <h4>Logo em Imagem</h4>
+                    <p style="font-size:0.85rem; color:#666; margin-top:-5px;">Se você enviar uma imagem (PNG/JPG), ela
+                        substituirá os textos abaixo do cabeçalho. Para voltar a usar texto, deixe este campo vazio.</p>
+                    <div class="form-group">
+                        <label>Upload / URL da Logo</label>
+                        <div class="upload-row">
+                            <input type="file" accept="image/*" onchange="handleUpload(this, 'logo_img')">
+                            <input type="text" id="logo_img" placeholder="Ex: URL da imagem"
+                                oninput="previewImg('logo_img', 'prev_logo')">
+                        </div>
+                        <img id="prev_logo" class="image-preview" src=""
+                            style="background:#eee; padding:10px; border-radius:10px; max-width:200px; display:none;">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Logo Texto Destaque (Dourado)</label>
-                    <input type="text" id="logo_texto_2" placeholder="Ex: Construções">
-                </div>
-                <div class="form-group">
-                    <label>Logo Subtítulo</label>
-                    <input type="text" id="logo_sub" placeholder="Ex: Engenharia e Obras">
+
+                <div class="sub-block">
+                    <h4>Ou: Logo em Texto</h4>
+                    <div class="form-group">
+                        <label>Logo Texto Principal</label>
+                        <input type="text" id="logo_texto_1" placeholder="Ex: MCP">
+                    </div>
+                    <div class="form-group">
+                        <label>Logo Texto Destaque (Dourado)</label>
+                        <input type="text" id="logo_texto_2" placeholder="Ex: Construções">
+                    </div>
+                    <div class="form-group">
+                        <label>Logo Subtítulo</label>
+                        <input type="text" id="logo_sub" placeholder="Ex: Engenharia e Obras">
+                    </div>
                 </div>
             </div>
 
@@ -787,6 +807,7 @@
         }
 
         const defaultConfig = {
+            logo_img: "",
             logo_texto_1: "MCP",
             logo_texto_2: "Construções",
             logo_sub: "Engenharia e Obras",
@@ -867,12 +888,13 @@
                         // Ativa preview com regex ajustada pra cada tipo
                         if (key.includes('_img')) {
                             let prevId = '';
-                            if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
+                            if (key === 'logo_img') prevId = 'prev_logo';
+                            else if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
                             else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
                             else if (key.includes('proj') && key.includes('_img')) prevId = key.replace('_img', '').replace('proj', 'prev_proj');
                             else if (key.includes('sobre_img')) prevId = 'prev_sobre';
 
-                            previewImg(key, prevId);
+                            if (prevId) previewImg(key, prevId);
                         }
                     }
                 }

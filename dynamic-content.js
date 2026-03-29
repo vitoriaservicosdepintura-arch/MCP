@@ -1,6 +1,7 @@
 // Carrega e aplica dinamicamente o conteúdo salvo do Painel Admin (LocalStorage)
 document.addEventListener("DOMContentLoaded", function () {
     const defaultData = {
+        logo_img: "",
         logo_texto_1: "MCP",
         logo_texto_2: "Construções",
         logo_sub: "Engenharia e Obras",
@@ -86,9 +87,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* ==== LOGO ==== */
-    setHtml('.logo-name', `${md.logo_texto_1} <span>${md.logo_texto_2}</span>`);
-    setHtml('.logo-sub2', md.logo_sub);
-    setHtml('footer .col:nth-child(1) h4', `${md.logo_texto_1} ${md.logo_texto_2}`.toUpperCase());
+    const logoLink = document.querySelector('.logo a');
+    if (md.logo_img) {
+        if (logoLink) logoLink.innerHTML = `<img src="${md.logo_img}" alt="Logo" style="max-height: 50px;">`;
+        setHtml('footer .col:nth-child(1) h4', `<img src="${md.logo_img}" alt="Logo" style="max-height: 40px;">`);
+    } else {
+        if (logoLink) logoLink.innerHTML = `<span class="logo-name">${md.logo_texto_1} <span>${md.logo_texto_2}</span></span><span class="logo-sub2">${md.logo_sub}</span>`;
+        setHtml('.logo-name', `${md.logo_texto_1} <span>${md.logo_texto_2}</span>`);
+        setHtml('.logo-sub2', md.logo_sub);
+        setHtml('footer .col:nth-child(1) h4', `${md.logo_texto_1} ${md.logo_texto_2}`.toUpperCase());
+    }
 
     /* ==== SLIDES ==== */
     const slides = document.querySelectorAll('#section-1 .slide');
