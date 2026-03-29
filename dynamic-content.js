@@ -81,9 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* ==== LOGO ==== */
-    setHtml('.logo-name', `${md.logo_texto_1} <span>${md.logo_texto_2}</span>`);
-    setHtml('.logo-sub2', md.logo_sub);
-    setHtml('footer .col:nth-child(1) h4', `${md.logo_texto_1} ${md.logo_texto_2}`.toUpperCase());
+    // Substituído por hardcode de imagem LOGO-1.png em index.html
 
     /* ==== SLIDES ==== */
     const slides = document.querySelectorAll('#section-1 .slide');
