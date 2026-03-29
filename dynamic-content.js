@@ -1,7 +1,6 @@
 // Carrega e aplica dinamicamente o conteúdo salvo do Painel Admin (LocalStorage)
 document.addEventListener("DOMContentLoaded", function () {
     const defaultData = {
-        logo_img: "",
         logo_texto_1: "MCP",
         logo_texto_2: "Construções",
         logo_sub: "Engenharia e Obras",
@@ -32,16 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
         serv_tit2: "Obras Comerciais e Industriais",
         serv_txt2: "<p style='margin-bottom: 15px;'>Galpões, lojas, escritórios e estruturas industriais prontos para o seu negócio.</p>",
         serv_img2: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80",
-
-        proj_tit: "PROJETOS RECENTES",
-        proj1_nome: "Residencial Vila Nova",
-        proj1_img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80",
-        proj2_nome: "Centro Empresarial Horizonte",
-        proj2_img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80",
-        proj3_nome: "Galpão Logístico LP-12",
-        proj3_img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80",
-        proj4_nome: "Reforma Residencial Completa",
-        proj4_img: "https://images.unsplash.com/photo-1545670723-196ed0954986?w=1600&q=80",
 
         sobre_tit: "Sobre Nós",
         sobre_txt: "<p>A MCP Construções nasceu da paixão por transformar projetos em realidade...</p>",
@@ -87,16 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* ==== LOGO ==== */
-    const logoLink = document.querySelector('.logo a');
-    if (md.logo_img) {
-        if (logoLink) logoLink.innerHTML = `<img src="${md.logo_img}" alt="Logo" style="max-height: 50px;">`;
-        setHtml('footer .col:nth-child(1) h4', `<img src="${md.logo_img}" alt="Logo" style="max-height: 40px;">`);
-    } else {
-        if (logoLink) logoLink.innerHTML = `<span class="logo-name">${md.logo_texto_1} <span>${md.logo_texto_2}</span></span><span class="logo-sub2">${md.logo_sub}</span>`;
-        setHtml('.logo-name', `${md.logo_texto_1} <span>${md.logo_texto_2}</span>`);
-        setHtml('.logo-sub2', md.logo_sub);
-        setHtml('footer .col:nth-child(1) h4', `${md.logo_texto_1} ${md.logo_texto_2}`.toUpperCase());
-    }
+    setHtml('.logo-name', `${md.logo_texto_1} <span>${md.logo_texto_2}</span>`);
+    setHtml('.logo-sub2', md.logo_sub);
+    setHtml('footer .col:nth-child(1) h4', `${md.logo_texto_1} ${md.logo_texto_2}`.toUpperCase());
 
     /* ==== SLIDES ==== */
     const slides = document.querySelectorAll('#section-1 .slide');
@@ -141,25 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (s2Txt) s2Txt.innerHTML = md.serv_txt2;
         const s2Img = servRows[1].querySelector('img');
         if (s2Img && md.serv_img2) s2Img.src = md.serv_img2;
-    }
-
-    /* ==== PROJETOS RECENTES ==== */
-    setHtml('#section-3 h3', md.proj_tit);
-    const projLi = document.querySelectorAll('#section-3 .videos-list li');
-    if (projLi.length >= 4) {
-        for (let i = 1; i <= 4; i++) {
-            const vbox = projLi[i - 1].querySelector('.video-box');
-            if (vbox) {
-                const img = vbox.querySelector('img');
-                const aLink = vbox.querySelector('a');
-                if (img) {
-                    img.src = md[`proj${i}_img`];
-                    img.alt = md[`proj${i}_nome`];
-                    vbox.style.backgroundImage = `url(${md[`proj${i}_img`]})`;
-                }
-                if (aLink) aLink.href = md[`proj${i}_img`];
-            }
-        }
     }
 
     /* ==== PORTFÓLIO ==== */

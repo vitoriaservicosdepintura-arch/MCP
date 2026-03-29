@@ -320,8 +320,6 @@
                 <li><a href="#" class="nav-link" data-target="inicio"><i class="fas fa-home"></i> Início (Banner)</a>
                 </li>
                 <li><a href="#" class="nav-link" data-target="servicos"><i class="fas fa-hammer"></i> Serviços</a></li>
-                <li><a href="#" class="nav-link" data-target="projetos"><i class="fas fa-camera"></i> Projetos
-                        Recentes</a></li>
                 <li><a href="#" class="nav-link" data-target="portfolio"><i class="fas fa-images"></i> Portfólio</a>
                 </li>
                 <li><a href="#" class="nav-link" data-target="sobre"><i class="fas fa-info-circle"></i> Sobre Nós</a>
@@ -345,37 +343,17 @@
             <!-- GERAL / LOGO -->
             <div id="geral" class="section-panel active">
                 <h3>Configurações Gerais</h3>
-
-                <div class="sub-block">
-                    <h4>Logo em Imagem</h4>
-                    <p style="font-size:0.85rem; color:#666; margin-top:-5px;">Se você enviar uma imagem (PNG/JPG), ela
-                        substituirá os textos abaixo do cabeçalho. Para voltar a usar texto, deixe este campo vazio.</p>
-                    <div class="form-group">
-                        <label>Upload / URL da Logo</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'logo_img')">
-                            <input type="text" id="logo_img" placeholder="Ex: URL da imagem"
-                                oninput="previewImg('logo_img', 'prev_logo')">
-                        </div>
-                        <img id="prev_logo" class="image-preview" src=""
-                            style="background:#eee; padding:10px; border-radius:10px; max-width:200px; display:none;">
-                    </div>
+                <div class="form-group">
+                    <label>Logo Texto Principal</label>
+                    <input type="text" id="logo_texto_1" placeholder="Ex: MCP">
                 </div>
-
-                <div class="sub-block">
-                    <h4>Ou: Logo em Texto</h4>
-                    <div class="form-group">
-                        <label>Logo Texto Principal</label>
-                        <input type="text" id="logo_texto_1" placeholder="Ex: MCP">
-                    </div>
-                    <div class="form-group">
-                        <label>Logo Texto Destaque (Dourado)</label>
-                        <input type="text" id="logo_texto_2" placeholder="Ex: Construções">
-                    </div>
-                    <div class="form-group">
-                        <label>Logo Subtítulo</label>
-                        <input type="text" id="logo_sub" placeholder="Ex: Engenharia e Obras">
-                    </div>
+                <div class="form-group">
+                    <label>Logo Texto Destaque (Dourado)</label>
+                    <input type="text" id="logo_texto_2" placeholder="Ex: Construções">
+                </div>
+                <div class="form-group">
+                    <label>Logo Subtítulo</label>
+                    <input type="text" id="logo_sub" placeholder="Ex: Engenharia e Obras">
                 </div>
             </div>
 
@@ -799,7 +777,7 @@
 
                     const dataUrl = canvas.toDataURL('image/jpeg', 0.6); // Compressão
                     document.getElementById(targetId).value = dataUrl;
-                    previewImg(targetId, targetId.replace('img', 'prev').replace(/port_img/g, 'prev_port').replace(/slide(\d)_img/, 'prev_slide$1').replace(/proj(\d)_img/, 'prev_proj$1').replace('serv_img', 'prev_serv')); // Atualiza preview chamando ID correto manualmente
+                    previewImg(targetId, targetId.replace('img', 'prev').replace(/port_img/g, 'prev_port').replace(/slide(\d)_img/, 'prev_slide$1').replace('serv_img', 'prev_serv')); // Atualiza preview chamando ID correto manualmente
                 }
                 img.src = e.target.result;
             }
@@ -807,7 +785,6 @@
         }
 
         const defaultConfig = {
-            logo_img: "",
             logo_texto_1: "MCP",
             logo_texto_2: "Construções",
             logo_sub: "Engenharia e Obras",
@@ -838,16 +815,6 @@
             serv_tit2: "Obras Comerciais e Industriais",
             serv_txt2: "<p style='margin-bottom: 15px;'>Galpões, lojas, escritórios e estruturas industriais prontos para o seu negócio.</p>",
             serv_img2: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80",
-
-            proj_tit: "PROJETOS RECENTES",
-            proj1_nome: "Residencial Vila Nova",
-            proj1_img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80",
-            proj2_nome: "Centro Empresarial Horizonte",
-            proj2_img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80",
-            proj3_nome: "Galpão Logístico LP-12",
-            proj3_img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80",
-            proj4_nome: "Reforma Residencial Completa",
-            proj4_img: "https://images.unsplash.com/photo-1545670723-196ed0954986?w=1600&q=80",
 
             sobre_tit: "Sobre Nós",
             sobre_txt: "<p>A MCP Construções nasceu da paixão por transformar projetos em realidade...</p>",
@@ -888,10 +855,8 @@
                         // Ativa preview com regex ajustada pra cada tipo
                         if (key.includes('_img')) {
                             let prevId = '';
-                            if (key === 'logo_img') prevId = 'prev_logo';
-                            else if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
+                            if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
                             else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
-                            else if (key.includes('proj') && key.includes('_img')) prevId = key.replace('_img', '').replace('proj', 'prev_proj');
                             else if (key.includes('sobre_img')) prevId = 'prev_sobre';
 
                             if (prevId) previewImg(key, prevId);
