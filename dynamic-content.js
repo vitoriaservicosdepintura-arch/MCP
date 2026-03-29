@@ -41,20 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
         contato_email: "contato@mcpconstrucoes.pt",
         contato_hr: "Seg–Sex: 08h às 18h",
 
-        // Defaults Portfolio
-        port_img1: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", port_nome1: "Residencial Vila Nova", port_cat1: "RESIDENCIAL",
-        port_img2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", port_nome2: "Centro Empresarial Horizonte", port_cat2: "COMERCIAL",
-        port_img3: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", port_nome3: "Galpão Logístico LP-12", port_cat3: "INDUSTRIAL",
-        port_img4: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80", port_nome4: "Casa Alto Padrão SP", port_cat4: "RESIDENCIAL, REFORMA",
-        port_img5: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=600&q=80", port_nome5: "Escritório Premium", port_cat5: "COMERCIAL, ACABAMENTO",
-        port_img6: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80", port_nome6: "Reforma Campinas", port_cat6: "REFORMA, ACABAMENTO",
-        port_img7: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80", port_nome7: "Condomínio Guarulhos", port_cat7: "RESIDENCIAL",
-        port_img8: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", port_nome8: "Complexo ABC", port_cat8: "INDUSTRIAL",
-        port_img9: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&q=80", port_nome9: "Acabamento Residencial", port_cat9: "ACABAMENTO",
-        port_img10: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80", port_nome10: "Loja Shopping", port_cat10: "COMERCIAL",
-        port_img11: "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=600&q=80", port_nome11: "Reforma SP", port_cat11: "REFORMA",
-        port_img12: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80", port_nome12: "Apto Alto Padrão", port_cat12: "RESIDENCIAL, ACABAMENTO"
+        // Não tem mais portfolio via objeto, tudo via Array dinâmico mcp_site_portfolio
     };
+
+    const defaultPortfolio = [
+        { img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", nome: "Residencial Vila Nova", categoria: "RESIDENCIAL" },
+        { img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", nome: "Centro Empresarial", categoria: "COMERCIAL" },
+        { img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", nome: "Galpão LP-12", categoria: "INDUSTRIAL" },
+        { img: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80", nome: "Casa Alto Padrão SP", categoria: "RESIDENCIAL, REFORMA" }
+    ];
 
     let savedData = null;
     try {
@@ -123,31 +118,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* ==== PORTFÓLIO ==== */
-    // Como os filtros do isotope funcionam por classes dadas em cada grid-item e data-src
-    // precisaremos atualizar isso. Para o isotope, data-src é lido pela lib q poe lazy load background, entao a gente tem q atualizar tanto src quanto bk img.
-    const portItems = document.querySelectorAll('.grid-item');
-    if (portItems.length >= 12) {
-        for (let i = 1; i <= 12; i++) {
-            const item = portItems[i - 1];
-            if (item) {
-                // Remove as classes antigas de filtro e poe as novas baseado na categoria
-                item.className = 'grid-item ' + md[`port_cat${i}`].split(',').map(c => 'filter-' + c.trim().substring(0, 3).toLowerCase()).join(' ');
+    const portGrid = document.querySelector('#section-4 .grid');
+    if (portGrid) {
+        portGrid.innerHTML = ''; // zera o que tinha no html estático
 
-                // Altera titulos
-                item.querySelector('.ttl').innerText = md[`port_cat${i}`];
-                item.querySelector('span:nth-child(2)').innerText = md[`port_nome${i}`];
+        let savedPort = null;
+        try {
+            let temp = JSON.parse(localStorage.getItem('mcp_site_portfolio'));
+            if (temp && Array.isArray(temp)) savedPort = temp;
+        } catch (e) { console.error(e); }
+        if (!savedPort) savedPort = defaultPortfolio;
 
-                // Altera img src e div da imagem com background
-                const imgHolder = item.querySelector('.bg-img');
-                const img = item.querySelector('img');
+        let gridHtml = '';
+        savedPort.forEach(item => {
+            const catClasses = item.categoria.split(',').map(c => 'filter-' + c.trim().substring(0, 3).toLowerCase()).join(' ');
+            gridHtml += `
+            <div class="grid-item ${catClasses}">
+                <a href="#" class="project-item">
+                    <div class="bg-img" style="background-image:url(${item.img || ''})">
+                        <img src="${item.img || ''}" data-src="${item.img || ''}" alt="${item.nome || ''}" class="hidden">
+                    </div>
+                    <div class="holder"><span class="ttl">${item.categoria || ''}</span><span>${item.nome || ''}</span></div>
+                </a>
+            </div>`;
+        });
 
-                if (md[`port_img${i}`]) {
-                    img.setAttribute('data-src', md[`port_img${i}`]);
-                    img.src = md[`port_img${i}`];
-                    imgHolder.style.backgroundImage = `url(${md[`port_img${i}`]})`;
-                }
+        portGrid.innerHTML = gridHtml;
+
+        // Dispara aviso para o isotope atualizar os blocos via evento
+        setTimeout(() => {
+            if (window.jQuery && jQuery().isotope) {
+                jQuery(portGrid).isotope('reloadItems').isotope({ filter: '*' });
             }
-        }
+        }, 300);
     }
 
 

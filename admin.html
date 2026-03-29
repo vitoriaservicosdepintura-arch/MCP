@@ -496,10 +496,17 @@
                 <h3>Menu Portfólio (Fotos)</h3>
                 <p>Aqui você adiciona as fotos que aparecerão na guia de Portfólio, no site as fotos ganham as
                     categorias de: Residencial, Comercial, Industrial, Reforma, Acabamento e também o filtro de "Todos".
-                    O Site tem capacidade para até 12 itens na grade.</p>
+                    Você pode adicionar quantas quiser, o layout da grade se adapta automaticamente.</p>
+
+                <div class="header-bar"
+                    style="position:static; padding:15px; margin-bottom:20px; box-shadow:none; border: 1px solid #ddd;">
+                    <h4 style="margin:0;">Projetos Cadastrados</h4>
+                    <button type="button" class="btn-save" onclick="addPortItem()"><i class="fas fa-plus"></i> Adicionar
+                        Projeto</button>
+                </div>
 
                 <div id="portfolio-container">
-                    <!-- Gerado dinamico pois  são 12 imagens -->
+                    <!-- Gerado dinamicamente -->
                 </div>
             </div>
 
@@ -554,27 +561,80 @@
         const LOGIN_CORRETO = "vitoriaservicosdepintura@gmail.com";
         const SENHA_CORRETA = "10203040";
 
-        // Gerar 12 blocos pro portifólio
-        const portContainer = document.getElementById('portfolio-container');
-        for (let i = 1; i <= 12; i++) {
-            portContainer.innerHTML += `
-                <div class="sub-block">
-                    <h4>Projeto ${i}</h4>
-                    <div class="form-group">
-                        <label>Upload/URL e Nome</label>
-                        <div class="upload-row">
-                            <input type="file" accept="image/*" onchange="handleUpload(this, 'port_img${i}')">
-                            <input type="text" id="port_img${i}" placeholder="URL da foto" oninput="previewImg('port_img${i}', 'prev_port${i}')">
+        let portfolioItems = [];
+
+        function renderPortfolio() {
+            const container = document.getElementById('portfolio-container');
+            container.innerHTML = '';
+            portfolioItems.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="sub-block portfolio-item-block">
+                        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; margin-bottom:15px; padding-bottom:10px;">
+                            <h4 style="margin:0; border:none; padding:0;">Projeto ${index + 1}</h4>
+                            <button type="button" class="logout-btn" style="padding:6px 12px; margin:0;" onclick="removePortItem(${index})"><i class="fas fa-trash"></i> Remover</button>
                         </div>
-                        <input type="text" id="port_nome${i}" placeholder="Nome do Projeto (Ex: Residencial Vila Nova)" style="margin-bottom:10px;">
-                        
-                        <label>Categoria (RESIDENCIAL, COMERCIAL, INDUSTRIAL, REFORMA, ACABAMENTO)</label>
-                        <input type="text" id="port_cat${i}" placeholder="Ex: RESIDENCIAL, REFORMA">
-                        
-                        <img id="prev_port${i}" class="image-preview" src="">
+                        <div class="form-group">
+                            <label>Upload/URL da Imagem</label>
+                            <div class="upload-row">
+                                <input type="file" accept="image/*" onchange="handleDynUpload(this, ${index})">
+                                <input type="text" id="port_img_${index}" placeholder="URL da foto" value="${item.img || ''}" oninput="updatePortField(${index}, 'img', this.value); previewImg('port_img_${index}', 'prev_port_${index}')">
+                            </div>
+                            <label style="margin-top:10px;">Nome do Projeto (Aparecerá no hover ou legenda)</label>
+                            <input type="text" id="port_nome_${index}" placeholder="Ex: Residencial Vila Nova" value="${item.nome || ''}" oninput="updatePortField(${index}, 'nome', this.value)" style="margin-bottom:10px;">
+                            
+                            <label>Categoria (RESIDENCIAL, COMERCIAL, INDUSTRIAL, REFORMA, ACABAMENTO)</label>
+                            <input type="text" id="port_cat_${index}" placeholder="Ex: RESIDENCIAL, REFORMA" value="${item.categoria || ''}" oninput="updatePortField(${index}, 'categoria', this.value)">
+                            
+                            <img id="prev_port_${index}" class="image-preview" src="${item.img || ''}" style="${item.img ? 'display:block' : 'display:none'}">
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+            });
+        }
+
+        function addPortItem() {
+            portfolioItems.push({ img: '', nome: '', categoria: 'RESIDENCIAL' });
+            renderPortfolio();
+        }
+
+        function removePortItem(index) {
+            if (confirm('Tem certeza que deseja remover este projeto?')) {
+                portfolioItems.splice(index, 1);
+                renderPortfolio();
+            }
+        }
+
+        function updatePortField(index, field, value) {
+            portfolioItems[index][field] = value;
+        }
+
+        function handleDynUpload(input, index) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = new Image();
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width, height = img.height;
+                    const max_size = 800;
+                    if (width > height) {
+                        if (width > max_size) { height *= max_size / width; width = max_size; }
+                    } else {
+                        if (height > max_size) { width *= max_size / height; height = max_size; }
+                    }
+                    canvas.width = width; canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+
+                    updatePortField(index, 'img', dataUrl);
+                    renderPortfolio(); // re-render block to show img
+                }
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
         }
 
         if (localStorage.getItem('mcp_admin_logged') === 'true') {
@@ -699,20 +759,15 @@
             contato_email: "contato@mcpconstrucoes.pt",
             contato_hr: "Seg–Sex: 08h às 18h",
 
-            // Defaults Portfolio
-            port_img1: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", port_nome1: "Residencial Vila Nova", port_cat1: "RESIDENCIAL",
-            port_img2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", port_nome2: "Centro Empresarial Horizonte", port_cat2: "COMERCIAL",
-            port_img3: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", port_nome3: "Galpão Logístico LP-12", port_cat3: "INDUSTRIAL",
-            port_img4: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80", port_nome4: "Casa Alto Padrão SP", port_cat4: "RESIDENCIAL, REFORMA",
-            port_img5: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=600&q=80", port_nome5: "Escritório Premium", port_cat5: "COMERCIAL, ACABAMENTO",
-            port_img6: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80", port_nome6: "Reforma Campinas", port_cat6: "REFORMA, ACABAMENTO",
-            port_img7: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80", port_nome7: "Condomínio Guarulhos", port_cat7: "RESIDENCIAL",
-            port_img8: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", port_nome8: "Complexo ABC", port_cat8: "INDUSTRIAL",
-            port_img9: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&q=80", port_nome9: "Acabamento Residencial", port_cat9: "ACABAMENTO",
-            port_img10: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80", port_nome10: "Loja Shopping", port_cat10: "COMERCIAL",
-            port_img11: "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=600&q=80", port_nome11: "Reforma SP", port_cat11: "REFORMA",
-            port_img12: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80", port_nome12: "Apto Alto Padrão", port_cat12: "RESIDENCIAL, ACABAMENTO",
+            // portfolio não fará mais parte das variáveis normais, migrado pro dynamic array
         };
+
+        const defaultPortfolio = [
+            { img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", nome: "Residencial Vila Nova", categoria: "RESIDENCIAL" },
+            { img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", nome: "Centro Empresarial", categoria: "COMERCIAL" },
+            { img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", nome: "Galpão LP-12", categoria: "INDUSTRIAL" },
+            { img: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80", nome: "Casa Alto Padrão SP", categoria: "RESIDENCIAL, REFORMA" }
+        ];
 
         function carregarDados() {
             try {
@@ -729,12 +784,18 @@
                             if (key.includes('slide')) prevId = key.replace('_img', '').replace('slide', 'prev_slide');
                             else if (key.includes('serv_img')) prevId = key.replace('serv_img', 'prev_serv');
                             else if (key.includes('sobre_img')) prevId = 'prev_sobre';
-                            else if (key.includes('port_img')) prevId = key.replace('port_img', 'prev_port');
 
                             previewImg(key, prevId);
                         }
                     }
                 }
+
+                // Load Portfolio Array
+                let savedPort = JSON.parse(localStorage.getItem('mcp_site_portfolio'));
+                if (!savedPort || !Array.isArray(savedPort)) savedPort = defaultPortfolio;
+                portfolioItems = savedPort;
+                renderPortfolio();
+
             } catch (e) {
                 console.error(e);
             }
@@ -752,6 +813,7 @@
 
             try {
                 localStorage.setItem('mcp_site_data', JSON.stringify(savedData));
+                localStorage.setItem('mcp_site_portfolio', JSON.stringify(portfolioItems));
                 const notif = document.getElementById('notif');
                 notif.classList.add('show');
                 notif.innerText = "Alterações salvas com sucesso!";
