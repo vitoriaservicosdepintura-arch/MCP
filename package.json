@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "canvas": "^3.2.2",
+    "jimp": "^1.6.0"
+  }
+}
