@@ -46,9 +46,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const defaultPortfolio = [
         { img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80", nome: "Residencial Vila Nova", categoria: "RESIDENCIAL" },
-        { img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", nome: "Centro Empresarial", categoria: "COMERCIAL" },
-        { img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", nome: "Galpão LP-12", categoria: "INDUSTRIAL" },
-        { img: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80", nome: "Casa Alto Padrão SP", categoria: "RESIDENCIAL, REFORMA" }
+        { img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80", nome: "Centro Empresarial Horizonte", categoria: "COMERCIAL" },
+        { img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", nome: "Galpão Logístico LP-12", categoria: "INDUSTRIAL" },
+        { img: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80", nome: "Casa Alto Padrão SP", categoria: "RESIDENCIAL, REFORMA" },
+        { img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=600&q=80", nome: "Escritório Corporativo Premium", categoria: "COMERCIAL, ACABAMENTO" },
+        { img: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80", nome: "Reforma Completa Campinas", categoria: "REFORMA, ACABAMENTO" },
+        { img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80", nome: "Condomínio Residencial Guarulhos", categoria: "RESIDENCIAL" },
+        { img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", nome: "Complexo Industrial ABC", categoria: "INDUSTRIAL" },
+        { img: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&q=80", nome: "Acabamento Residencial", categoria: "ACABAMENTO" },
+        { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80", nome: "Loja Shopping Center", categoria: "COMERCIAL" },
+        { img: "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=600&q=80", nome: "Reforma Comercial SP", categoria: "REFORMA" },
+        { img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80", nome: "Apartamento Alto Padrão", categoria: "RESIDENCIAL, ACABAMENTO" }
     ];
 
     let savedData = null;
@@ -125,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let savedPort = null;
         try {
             let temp = JSON.parse(localStorage.getItem('mcp_site_portfolio'));
-            if (temp && Array.isArray(temp)) savedPort = temp;
+            if (temp && Array.isArray(temp) && temp.length > 4) savedPort = temp;
         } catch (e) { console.error(e); }
         if (!savedPort) savedPort = defaultPortfolio;
 
